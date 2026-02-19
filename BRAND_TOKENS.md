@@ -13,4 +13,7 @@
 - Headings, nav text → Navy
 - Status / fuel / signals → Accent Lime
 - Body text → Gray / Navy
+<<<<<<< Updated upstream
 EOF
+=======
+>>>>>>> Stashed changes

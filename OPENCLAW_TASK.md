@@ -129,4 +129,7 @@ Create Tailwind theme tokens accordingly.
 - Push to main branch
 - If uncertain, leave TODO comments
 
+<<<<<<< Updated upstream
 EOF
+=======
+>>>>>>> Stashed changes
