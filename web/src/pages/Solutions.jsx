@@ -1,38 +1,43 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Fuel, Users, Shield, CheckCircle } from 'lucide-react';
+import { ArrowRight, Users, Truck, Bus, Building2, Hammer } from 'lucide-react';
 
 const Solutions = () => {
   const solutions = [
     {
-      title: 'Individual Owners',
-      description: 'Protect your personal vehicles with theft alerts, maintenance reminders, and document vault.',
-      path: '/solutions/individual-owners',
-      icon: Shield,
-    },
-    {
-      title: 'Logistics & Transport',
-      description: 'Optimize fleet utilization, ensure route compliance, and improve driver performance.',
-      path: '/solutions/logistics-transporters',
-      icon: MapPin,
-    },
-    {
-      title: 'Bus Operators',
-      description: 'Monitor passenger vehicles with schedule adherence, driver behavior, and safety alerts.',
-      path: '/solutions/bus-operators',
       icon: Users,
+      title: 'Individual Owners',
+      description: 'Perfect for personal vehicle owners who want theft protection, maintenance tracking, and peace of mind.',
+      path: '/solutions/individual-owners',
+      color: 'bg-blue-50',
     },
     {
+      icon: Truck,
+      title: 'Logistics & Transport',
+      description: 'Fleet tracking, route optimization, and delivery verification for logistics companies.',
+      path: '/solutions/logistics-transporters',
+      color: 'bg-green-50',
+    },
+    {
+      icon: Bus,
+      title: 'Bus Operators',
+      description: 'Passenger safety, schedule adherence, and route compliance for bus fleets.',
+      path: '/solutions/bus-operators',
+      color: 'bg-purple-50',
+    },
+    {
+      icon: Building2,
       title: 'Municipal Sweeping',
-      description: 'Verify cleaning operations with PTO monitoring, coverage proof, and missed zone alerts.',
+      description: 'Cleaning verification, coverage tracking, and proof-of-work for municipal vehicles.',
       path: '/solutions/municipal-sweeping',
-      icon: CheckCircle,
+      color: 'bg-cyan-50',
     },
     {
+      icon: Hammer,
       title: 'Construction & Industrial',
-      description: 'Track heavy equipment, monitor fuel usage, and prevent unauthorized usage.',
+      description: 'Equipment tracking, theft prevention, and utilization monitoring for heavy machinery.',
       path: '/solutions/construction-industrial',
-      icon: Fuel,
+      color: 'bg-orange-50',
     },
   ];
 
@@ -43,10 +48,10 @@ const Solutions = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Solutions for every fleet
+              Solutions for every industry
             </h1>
-            <p className="text-xl text-gray-600">
-              Whether you run 5 vehicles or 5,000, InteliFleet has a solution tailored to your industry.
+            <p className="text-xl text-gray-600 mb-8">
+              Tailored fleet management solutions designed for your specific industry needs and challenges.
             </p>
           </div>
         </div>
@@ -56,28 +61,47 @@ const Solutions = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solutions.map((s) => (
+            {solutions.map((solution) => (
               <Link
-                key={s.title}
-                to={s.path}
-                className="group bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all"
+                key={solution.title}
+                to={solution.path}
+                className="group block"
               >
-                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-6 group-hover:bg-primary/20 transition-colors">
-                  <s.icon className="h-7 w-7 text-primary" />
+                <div className={`${solution.color} rounded-2xl p-8 h-full hover:shadow-lg transition-shadow`}>
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-xl mb-6 shadow-sm">
+                    <solution.icon className="h-7 w-7 text-navy" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-navy mb-3">
+                    {solution.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4">
+                    {solution.description}
+                  </p>
+                  <span className="inline-flex items-center text-primary font-medium">
+                    Learn more
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </span>
                 </div>
-                <h2 className="text-xl font-semibold text-navy mb-3">
-                  {s.title}
-                </h2>
-                <p className="text-gray-600 mb-6">
-                  {s.description}
-                </p>
-                <span className="inline-flex items-center text-primary font-medium">
-                  Learn more
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                </span>
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-navy text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Not sure which solution fits?</h2>
+          <p className="text-lg text-gray-300 mb-8">
+            Talk to our team for a personalized recommendation.
+          </p>
+          <Link
+            to="/company/contact"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-navy font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+          >
+            Contact Sales
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
         </div>
       </section>
     </div>
