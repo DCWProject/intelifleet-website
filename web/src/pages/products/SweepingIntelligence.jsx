@@ -1,141 +1,210 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Droplets, Map, CheckCircle, AlertCircle, BarChart3, Code } from 'lucide-react';
+import { ArrowRight, Droplets, CheckCircle, Map, AlertCircle, Clock } from 'lucide-react';
 
 const SweepingIntelligence = () => {
   const features = [
     {
       icon: CheckCircle,
       title: 'Cleaning Verification',
-      description: 'Verify that sweeping/cleaning actually happened with PTO sensor data.',
+      description: 'Verify PTO engagement and actual sweeping activity, not just vehicle movement.',
     },
     {
       icon: Map,
       title: 'Coverage Maps',
-      description: 'Visualize cleaned areas and identify missed zones.',
+      description: 'Visual heatmaps showing cleaned areas and missed zones.',
+    },
+    {
+      icon: Clock,
+      title: 'Activity Timeline',
+      description: 'Detailed timeline showing when cleaning was ON vs OFF.',
     },
     {
       icon: AlertCircle,
       title: 'Missed Zone Alerts',
-      description: 'Get notified when scheduled areas were not cleaned.',
+      description: 'Automatic detection and alerts for areas that were skipped.',
     },
-    {
-      icon: BarChart3,
-      title: 'Efficiency Scoring',
-      description: 'Score cleaning efficiency based on time, area, and quality.',
-    },
-  ];
-
-  const dataFields = [
-    { field: 'cleaning_state', type: 'boolean', description: 'Cleaning active status' },
-    { field: 'pto_state', type: 'boolean', description: 'PTO engaged/disengaged' },
-    { field: 'broom_state', type: 'boolean', description: 'Broom rotation active' },
-    { field: 'gps_segment_id', type: 'string', description: 'Road segment identifier' },
-    { field: 'area_cleaned_m2', type: 'float', description: 'Area cleaned in sq meters' },
-    { field: 'cleaning_duration', type: 'int', description: 'Duration in seconds' },
-  ];
-
-  const events = [
-    { event: 'cleaning.started', description: 'Sweeping activity began' },
-    { event: 'cleaning.stopped', description: 'Sweeping activity ended' },
-    { event: 'coverage.missed_zone', description: 'Scheduled area not cleaned' },
-    { event: 'coverage.completed', description: 'Scheduled route completed' },
-    { event: 'pto.engaged', description: 'PTO system activated' },
   ];
 
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link to="/product" className="inline-flex items-center text-gray-500 hover:text-navy mb-8">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Products
-        </Link>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div>
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-cyan-50 rounded-2xl mb-6">
-              <Droplets className="h-8 w-8 text-cyan-600" />
+      {/* Hero */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium mb-6">
+                <Droplets className="w-4 h-4 mr-2" />
+                Sweeping Intelligence
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+                Sweeping Intelligence
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Don't just track movement. Verify cleaning happened. Purpose-built for municipal sweeping, road cleaning, and maintenance vehicles.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/company/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                >
+                  Book a Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Sweeping Intelligence
-            </h1>
-            <p className="text-xl text-gray-600 mb-6">
-              Don't just track movement. Verify cleaning happened.
-            </p>
-            <p className="text-gray-600 mb-8">
-              Specialized monitoring for municipal sweeping, road cleaning, and industrial cleaning vehicles. Prove work completion with sensor data.
-            </p>
-            <Link
-              to="/company/contact"
-              className="inline-flex items-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-          <div className="bg-gray-100 rounded-2xl h-80 flex items-center justify-center">
-            <Droplets className="h-24 w-24 text-gray-300" />
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+                <img 
+                  src="/images/hero-sweeping.png" 
+                  alt="Sweeping Intelligence Dashboard"
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden h-80 bg-gray-100 items-center justify-center">
+                  <div className="text-center">
+                    <Droplets className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <p className="text-gray-500">Sweeping Intelligence Dashboard</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-navy mb-12">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <f.icon className="h-6 w-6 text-primary" />
+      {/* Features */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Built for cleaning operations</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature) => (
+              <div key={feature.title} className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-4">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-navy mb-1">{f.title}</h3>
-                  <p className="text-gray-600">{f.description}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-xl font-semibold text-navy">Data Fields</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-2 text-navy font-medium">Field</th>
-                    <th className="text-left py-2 text-navy font-medium">Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {dataFields.map((f) => (
-                    <tr key={f.field} className="border-b border-gray-100">
-                      <td className="py-2 font-mono text-primary">{f.field}</td>
-                      <td className="py-2 text-gray-600">{f.type}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      {/* How It Works */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">How sweeping verification works</h2>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-xl font-semibold text-navy">Event Types</h3>
-            </div>
-            <div className="space-y-3">
-              {events.map((e) => (
-                <div key={e.event} className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="font-mono text-sm text-primary">{e.event}</span>
-                  <span className="text-sm text-gray-600">{e.description}</span>
-                </div>
-              ))}
-            </div>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'PTO Sensor',
+                description: 'Sensor installed on PTO (Power Take-Off) detects when brooms/brushes are engaged.',
+              },
+              {
+                step: '02',
+                title: 'GPS Correlation',
+                description: 'System correlates PTO state with GPS location to map cleaning activity.',
+              },
+              {
+                step: '03',
+                title: 'Verification Reports',
+                description: 'Generate proof-of-work reports showing exactly what was cleaned and when.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative">
+                <span className="text-6xl font-bold text-gray-200">{item.step}</span>
+                <h3 className="text-xl font-semibold text-navy mt-4 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Use Cases */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Perfect for</h2>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Municipal Corporations',
+                description: 'Prove to citizens that roads are being cleaned. Generate compliance reports for audits.',
+              },
+              {
+                title: 'Road Maintenance',
+                description: 'Verify sweeping before/after road work. Document work completion for contractors.',
+              },
+              {
+                title: 'Industrial Facilities',
+                description: 'Ensure plant roads and yards are cleaned per safety and environmental standards.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="bg-gray-50 rounded-xl p-6">
+                <h3 className="text-lg font-semibold text-navy mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Developer */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-navy mb-8">Developer API</h2>
+          
+          <div className="bg-gray-900 rounded-xl p-6 overflow-x-auto">
+            <pre className="text-sm text-gray-300">
+{
+`// Sweeping event payload
+{
+  "event": "cleaning.started",
+  "vehicle_id": "SWEEP-001",
+  "pto_state": "engaged",
+  "broom_state": "active",
+  "location": {
+    "lat": 28.6139,
+    "lng": 77.2090,
+    "address": "Connaught Place, New Delhi"
+  },
+  "timestamp": "2025-02-22T10:30:00Z"
+}`}
+            </pre>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-navy text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Prove cleaning happened</h2>
+          <p className="text-lg text-gray-300 mb-8">
+            Get the data you need for compliance, billing, and quality assurance.
+          </p>
+          <Link
+            to="/company/contact"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-navy font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

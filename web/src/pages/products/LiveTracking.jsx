@@ -1,143 +1,240 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, MapPin, Navigation, Map, Clock, Zap, Code } from 'lucide-react';
+import { ArrowRight, MapPin, Route, Clock, Bell, Navigation, Zap, Check } from 'lucide-react';
 
 const LiveTracking = () => {
   const features = [
     {
-      icon: Navigation,
+      icon: MapPin,
       title: 'Real-time GPS',
       description: '10-second location updates with precise coordinates, speed, and heading.',
     },
     {
-      icon: Map,
+      icon: Route,
+      title: 'Route Playback',
+      description: 'Replay any journey with speed overlays, stoppages, and timeline scrubbing.',
+    },
+    {
+      icon: Navigation,
       title: 'Geofencing',
-      description: 'Create unlimited virtual boundaries. Get instant alerts for entry/exit.',
+      description: 'Create virtual boundaries and get instant entry/exit alerts.',
     },
     {
       icon: Clock,
-      title: 'Route Playback',
-      description: 'Replay any journey with speed overlays, stoppages, and events.',
-    },
-    {
-      icon: Zap,
-      title: 'Ignition Status',
-      description: 'Monitor engine ON/OFF status in real-time.',
+      title: 'Idle Detection',
+      description: 'Monitor engine status and detect excessive idling automatically.',
     },
   ];
 
-  const dataFields = [
-    { field: 'vehicle_id', type: 'string', description: 'Unique vehicle identifier' },
-    { field: 'lat', type: 'float', description: 'Latitude coordinate' },
-    { field: 'lng', type: 'float', description: 'Longitude coordinate' },
-    { field: 'speed', type: 'float', description: 'Speed in km/h' },
-    { field: 'heading', type: 'int', description: 'Direction in degrees (0-360)' },
-    { field: 'ts', type: 'timestamp', description: 'Event timestamp (ISO 8601)' },
-    { field: 'ignition', type: 'boolean', description: 'Engine ON/OFF state' },
+  const developerFields = [
+    { field: 'vehicle_id', type: 'string', desc: 'Unique vehicle identifier' },
+    { field: 'lat', type: 'float', desc: 'Latitude coordinate' },
+    { field: 'lng', type: 'float', desc: 'Longitude coordinate' },
+    { field: 'speed', type: 'float', desc: 'Speed in km/h' },
+    { field: 'heading', type: 'int', desc: 'Direction in degrees (0-360)' },
+    { field: 'ignition', type: 'boolean', desc: 'Engine ON/OFF state' },
+    { field: 'ts', type: 'timestamp', desc: 'Event timestamp (ISO 8601)' },
   ];
 
   const events = [
-    { event: 'location.ping', description: 'Periodic location update' },
-    { event: 'ignition.on', description: 'Engine started' },
-    { event: 'ignition.off', description: 'Engine stopped' },
-    { event: 'geofence.enter', description: 'Vehicle entered geofence' },
-    { event: 'geofence.exit', description: 'Vehicle exited geofence' },
-    { event: 'speed.violation', description: 'Speed limit exceeded' },
+    { event: 'location.ping', desc: 'Periodic location update' },
+    { event: 'ignition.on', desc: 'Engine started' },
+    { event: 'ignition.off', desc: 'Engine stopped' },
+    { event: 'geofence.enter', desc: 'Vehicle entered defined zone' },
+    { event: 'geofence.exit', desc: 'Vehicle left defined zone' },
+    { event: 'idle.start', desc: 'Vehicle started idling' },
+    { event: 'idle.end', desc: 'Vehicle stopped idling' },
   ];
 
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link to="/product" className="inline-flex items-center text-gray-500 hover:text-navy mb-8">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Products
-        </Link>
-
-        {/* Hero */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div>
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-50 rounded-2xl mb-6">
-              <MapPin className="h-8 w-8 text-blue-600" />
+      {/* Hero */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium mb-6">
+                <MapPin className="w-4 h-4 mr-2" />
+                GPS Tracking
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+                Live Tracking
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Real-time GPS tracking with 10-second updates. Know exactly where every vehicle is, where it's been, and where it's heading.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/company/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                >
+                  Book a Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+                <Link
+                  to="/docs/device-integration"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
+                >
+                  View API Docs
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Live Tracking
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Real-time GPS tracking with sub-10-second updates. Know exactly where every vehicle is, where it's been, and where it's going.
-            </p>
-            <Link
-              to="/company/contact"
-              className="inline-flex items-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-          <div className="bg-gray-100 rounded-2xl h-80 flex items-center justify-center">
-            <MapPin className="h-24 w-24 text-gray-300" />
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+                <img 
+                  src="/images/hero-fleet-map.png" 
+                  alt="Live Fleet Tracking Dashboard"
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden h-80 bg-gray-100 items-center justify-center">
+                  <div className="text-center">
+                    <MapPin className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <p className="text-gray-500">Live Fleet Map Visualization</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        {/* Features Grid */}
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-navy mb-12">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <f.icon className="h-6 w-6 text-primary" />
+      {/* Features */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Everything you need to track your fleet</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature) => (
+              <div key={feature.title} className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-4">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-navy mb-1">{f.title}</h3>
-                  <p className="text-gray-600">{f.description}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        {/* Developer Section */}
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-xl font-semibold text-navy">Data Fields</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-2 text-navy font-medium">Field</th>
-                    <th className="text-left py-2 text-navy font-medium">Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {dataFields.map((f) => (
-                    <tr key={f.field} className="border-b border-gray-100">
-                      <td className="py-2 font-mono text-primary">{f.field}</td>
-                      <td className="py-2 text-gray-600">{f.type}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      {/* How It Works */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">How it works</h2>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-xl font-semibold text-navy">Event Types</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Device Installation',
+                description: 'GPS device installed in vehicle. Connects via 4G/LTE network.',
+              },
+              {
+                step: '02',
+                title: 'Data Streaming',
+                description: 'Location data streams every 10 seconds via MQTT or HTTP.',
+              },
+              {
+                step: '03',
+                title: 'Real-time Display',
+                description: 'Dashboard updates live with position, speed, and status.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative">
+                <span className="text-6xl font-bold text-gray-200">{item.step}</span>
+                <h3 className="text-xl font-semibold text-navy mt-4 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Developer Section */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-3xl font-bold text-navy mb-6">Developer-friendly data</h2>
+              <p className="text-gray-600 mb-8">
+                Access raw location data via our API or receive real-time events via webhooks.
+              </p>
+
+              <h3 className="text-lg font-semibold text-navy mb-4">Data Fields</h3>
+              <div className="bg-gray-900 rounded-xl overflow-hidden">
+                <table className="w-full text-sm">
+                  <thead className="bg-gray-800">
+                    <tr>
+                      <th className="px-4 py-3 text-left text-gray-400 font-medium">Field</th>
+                      <th className="px-4 py-3 text-left text-gray-400 font-medium">Type</th>
+                      <th className="px-4 py-3 text-left text-gray-400 font-medium">Description</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-800">
+                    {developerFields.map((field) => (
+                      <tr key={field.field}>
+                        <td className="px-4 py-3 text-primary font-mono">{field.field}</td>
+                        <td className="px-4 py-3 text-gray-500 font-mono">{field.type}</td>
+                        <td className="px-4 py-3 text-gray-300">{field.desc}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <div className="space-y-3">
-              {events.map((e) => (
-                <div key={e.event} className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="font-mono text-sm text-primary">{e.event}</span>
-                  <span className="text-sm text-gray-600">{e.description}</span>
-                </div>
-              ))}
+
+            <div>
+              <h3 className="text-lg font-semibold text-navy mb-4">Event Types</h3>
+              <div className="space-y-3">
+                {events.map((evt) => (
+                  <div key={evt.event} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                    <code className="text-primary font-mono text-sm">{evt.event}</code>
+                    <span className="text-gray-600 text-sm">{evt.desc}</span>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 p-6 bg-primary/10 rounded-xl">
+                <h4 className="font-semibold text-navy mb-2">Quick Start</h4>
+                <p className="text-gray-600 mb-4">
+                  Get your API key and start tracking in minutes.
+                </p>
+                <Link
+                  to="/docs/getting-started"
+                  className="inline-flex items-center text-primary font-medium"
+                >
+                  View Documentation →
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-navy text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Start tracking your fleet today</h2>
+          <p className="text-lg text-gray-300 mb-8">
+            Get real-time visibility into your entire fleet.
+          </p>
+          <Link
+            to="/company/contact"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-navy font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };

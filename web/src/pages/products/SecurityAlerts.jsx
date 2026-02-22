@@ -1,114 +1,191 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Bell, Shield, Lock, Clock, AlertTriangle } from 'lucide-react';
+import { ArrowRight, BarChart3, FileText, Download, PieChart, TrendingUp, Calendar } from 'lucide-react';
 
-const SecurityAlerts = () => {
+const ReportsAnalytics = () => {
   const features = [
     {
-      icon: Shield,
-      title: 'Unauthorized Ignition',
-      description: 'Instant alerts when engine starts outside authorized hours.',
+      icon: FileText,
+      title: 'MIS Reports',
+      description: 'Standard management reports for daily, weekly, and monthly fleet performance.',
     },
     {
-      icon: Clock,
-      title: 'Off-hours Movement',
-      description: 'Get notified if vehicle moves during restricted times.',
+      icon: PieChart,
+      title: 'Utilization Metrics',
+      description: 'Track vehicle utilization, idle time, and efficiency across your fleet.',
     },
     {
-      icon: Lock,
-      title: 'Geo-locking',
-      description: 'Prevent engine start outside designated areas.',
+      icon: Download,
+      title: 'Data Exports',
+      description: 'Export data in Excel, PDF, or CSV formats for further analysis.',
     },
     {
-      icon: AlertTriangle,
-      title: 'Panic Button',
-      description: 'Emergency alert system for drivers in distress.',
+      icon: BarChart3,
+      title: 'Custom Dashboards',
+      description: 'Build personalized dashboards with the metrics that matter to you.',
     },
   ];
 
-  const alertTypes = [
-    { name: 'Unauthorized Ignition', channels: 'Push, SMS, Email', response: 'Immediate' },
-    { name: 'Off-hours Movement', channels: 'Push, Email', response: '< 30 seconds' },
-    { name: 'Geofence Breach', channels: 'Push, SMS, Email', response: 'Immediate' },
-    { name: 'Speed Violation', channels: 'Push, Email', response: '< 1 minute' },
-    { name: 'Panic Alert', channels: 'Push, SMS, Email, Call', response: 'Immediate' },
-    { name: 'Towing Detection', channels: 'Push, SMS, Email', response: '< 2 minutes' },
+  const reportTypes = [
+    { name: 'Vehicle Summary', desc: 'Overview of all vehicles and their status', freq: 'Daily/Weekly/Monthly' },
+    { name: 'Trip Report', desc: 'Detailed trip logs with routes and stoppages', freq: 'Daily' },
+    { name: 'Fuel Report', desc: 'Fuel consumption, efficiency, and alerts', freq: 'Daily/Weekly' },
+    { name: 'Driver Performance', desc: 'Driver scores and behavior summary', freq: 'Weekly/Monthly' },
+    { name: 'Maintenance Report', desc: 'Upcoming and overdue services', freq: 'Weekly' },
+    { name: 'Alert Report', desc: 'Summary of all alerts and violations', freq: 'Daily/Weekly' },
+    { name: 'Geofence Report', desc: 'Entry/exit logs for all geofences', freq: 'Daily' },
+    { name: 'Custom Report', desc: 'Build your own with filters and fields', freq: 'On-demand' },
   ];
 
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link to="/product" className="inline-flex items-center text-gray-500 hover:text-navy mb-8">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Products
-        </Link>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div>
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-red-50 rounded-2xl mb-6">
-              <Bell className="h-8 w-8 text-red-600" />
+      {/* Hero */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm font-medium mb-6">
+                <BarChart3 className="w-4 h-4 mr-2" />
+                Reports & Analytics
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+                Reports & Analytics
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Comprehensive reporting suite with MIS reports, utilization metrics, custom filters, and exports. Make data-driven decisions.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/company/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                >
+                  Book a Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Security & Alerts
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              24/7 security monitoring with intelligent alerts. Protect your fleet from theft, misuse, and unauthorized access.
-            </p>
-            <Link
-              to="/company/contact"
-              className="inline-flex items-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
-            >
-              Get Started
-            </Link>
-          </div>
-          <div className="bg-gray-100 rounded-2xl h-80 flex items-center justify-center">
-            <Bell className="h-24 w-24 text-gray-300" />
+            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center justify-center w-20 h-20 bg-primary/10 rounded-full mb-4">
+                  <TrendingUp className="h-10 w-10 text-primary" />
+                </div>
+                <p className="text-2xl font-bold text-navy">Fleet Efficiency</p>
+                <p className="text-green-600 font-medium">+12% this month</p>
+              </div>
+              <div className="space-y-4">
+                {[
+                  { label: 'Vehicle Utilization', value: '87%', trend: 'up' },
+                  { label: 'Fuel Efficiency', value: '12.5 km/l', trend: 'up' },
+                  { label: 'Driver Score Avg', value: '84/100', trend: 'up' },
+                  { label: 'On-time Delivery', value: '94%', trend: 'stable' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                    <span className="text-gray-600">{item.label}</span>
+                    <div className="flex items-center">
+                      <span className="font-semibold text-navy mr-2">{item.value}</span>
+                      <span className={`text-xs ${
+                        item.trend === 'up' ? 'text-green-500' : 
+                        item.trend === 'down' ? 'text-red-500' : 
+                        'text-gray-400'
+                      }`}>
+                        {item.trend === 'up' ? '↑' : item.trend === 'down' ? '↓' : '→'}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
+      </section>
 
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-navy mb-12">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <f.icon className="h-6 w-6 text-primary" />
+      {/* Features */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Insights that drive decisions</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature) => (
+              <div key={feature.title} className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-4">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-navy mb-1">{f.title}</h3>
-                  <p className="text-gray-600">{f.description}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="bg-gray-50 rounded-2xl p-8">
-          <h2 className="text-2xl font-bold text-navy mb-8">Alert Types & Channels</h2>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 text-navy font-medium">Alert Type</th>
-                  <th className="text-left py-3 text-navy font-medium">Channels</th>
-                  <th className="text-left py-3 text-navy font-medium">Response Time</th>
-                </tr>
-              </thead>
-              <tbody>
-                {alertTypes.map((a) => (
-                  <tr key={a.name} className="border-b border-gray-100">
-                    <td className="py-3 text-gray-700">{a.name}</td>
-                    <td className="py-3 text-gray-600">{a.channels}</td>
-                    <td className="py-3 text-primary font-medium">{a.response}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      {/* Report Types */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Report library</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {reportTypes.map((report) => (
+              <div key={report.name} className="bg-white rounded-xl p-6 border border-gray-100">
+                <h3 className="font-semibold text-navy mb-2">{report.name}</h3>
+                <p className="text-gray-600 text-sm mb-3">{report.desc}</p>
+                <span className="inline-flex items-center text-xs text-gray-500">
+                  <Calendar className="w-3 h-3 mr-1" />
+                  {report.freq}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Dashboard Preview */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-navy mb-4">Custom dashboards</h2>
+            <p className="text-lg text-gray-600">Build the perfect view for your role</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { role: 'Fleet Manager', focus: 'Utilization, costs, alerts' },
+              { role: 'Operations', focus: 'Routes, deliveries, delays' },
+              { role: 'Safety Officer', focus: 'Driver scores, incidents' },
+              { role: 'Maintenance', focus: 'Service schedules, downtime' },
+              { role: 'Executive', focus: 'KPIs, trends, ROI' },
+              { role: 'Driver', focus: 'Personal score, trips, feedback' },
+            ].map((item) => (
+              <div key={item.role} className="bg-gray-50 rounded-xl p-6 text-center">
+                <h3 className="font-semibold text-navy mb-1">{item.role}</h3>
+                <p className="text-sm text-gray-500">{item.focus}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20 bg-navy text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold mb-4">Unlock your fleet data</h2>
+          <p className="text-lg text-gray-300 mb-8">
+            Get the insights you need to optimize your operations.
+          </p>
+          <Link
+            to="/company/contact"
+            className="inline-flex items-center justify-center px-8 py-4 bg-primary text-navy font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default SecurityAlerts;
+export default ReportsAnalytics;

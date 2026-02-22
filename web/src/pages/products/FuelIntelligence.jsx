@@ -1,146 +1,216 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Fuel, Droplets, TrendingUp, AlertTriangle, BarChart3, Code } from 'lucide-react';
+import { ArrowRight, Fuel, AlertTriangle, TrendingDown, Droplet, Check } from 'lucide-react';
 
 const FuelIntelligence = () => {
   const features = [
     {
-      icon: Droplets,
-      title: 'Fuel Level Monitoring',
-      description: 'Real-time fuel level tracking with ultrasonic or capacitive sensors.',
+      icon: Droplet,
+      title: 'Real-time Monitoring',
+      description: 'Live fuel level tracking with ultrasonic sensor accuracy (±1%).',
     },
     {
       icon: AlertTriangle,
       title: 'Theft Detection',
-      description: 'Instant alerts for sudden fuel drops that indicate theft or leakage.',
+      description: 'Instant alerts for sudden fuel drops that indicate theft.',
     },
     {
-      icon: TrendingUp,
-      title: 'Refuel Detection',
-      description: 'Automatic detection and logging of all refueling events.',
+      icon: TrendingDown,
+      title: 'Efficiency Analytics',
+      description: 'Track mileage, km/l efficiency, and benchmark across your fleet.',
     },
     {
-      icon: BarChart3,
-      title: 'Efficiency Reports',
-      description: 'Track mileage, km/l, and benchmark across your fleet.',
+      icon: Fuel,
+      title: 'Refuel Tracking',
+      description: 'Automatic detection of refueling events with volume logged.',
     },
-  ];
-
-  const dataFields = [
-    { field: 'fuel_liters', type: 'float', description: 'Current fuel level in liters' },
-    { field: 'fuel_raw', type: 'int', description: 'Raw sensor reading' },
-    { field: 'sensor_type', type: 'string', description: 'ultrasonic | capacitive' },
-    { field: 'calibration_profile', type: 'string', description: 'Tank calibration ID' },
-    { field: 'mileage', type: 'float', description: 'Distance since last refuel' },
-    { field: 'efficiency', type: 'float', description: 'km per liter' },
-  ];
-
-  const events = [
-    { event: 'fuel.refuel', description: 'Fuel added to tank' },
-    { event: 'fuel.drop_suspected', description: 'Sudden fuel level decrease' },
-    { event: 'fuel.theft_alert', description: 'Theft threshold crossed' },
-    { event: 'fuel.leak_suspected', description: 'Gradual fuel loss detected' },
-    { event: 'fuel.low', description: 'Fuel below threshold' },
   ];
 
   return (
     <div className="bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <Link to="/product" className="inline-flex items-center text-gray-500 hover:text-navy mb-8">
-          <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Products
-        </Link>
-
-        <div className="grid lg:grid-cols-2 gap-12 items-center mb-20">
-          <div>
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-green-50 rounded-2xl mb-6">
-              <Fuel className="h-8 w-8 text-green-600" />
+      {/* Hero */}
+      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium mb-6">
+                <Fuel className="w-4 h-4 mr-2" />
+                Fuel Intelligence
+              </div>
+              <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+                Fuel Intelligence
+              </h1>
+              <p className="text-xl text-gray-600 mb-8">
+                Advanced fuel monitoring with ultrasonic sensors. Detect theft, track efficiency, and optimize fuel costs across your entire fleet.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  to="/company/contact"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                >
+                  Book a Demo
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </div>
             </div>
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
-              Fuel Intelligence
-            </h1>
-            <p className="text-xl text-gray-600 mb-8">
-              Advanced fuel monitoring with theft detection, refuel alerts, and efficiency analytics. Stop losing fuel to theft and inefficiency.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Link
-                to="/company/contact"
-                className="inline-flex items-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
-              >
-                Get Started
-              </Link>
-              <Link
-                to="/pricing"
-                className="inline-flex items-center px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
-              >
-                View Pricing
-              </Link>
+            <div className="relative">
+              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 overflow-hidden">
+                <img 
+                  src="/images/hero-fuel-analytics.png" 
+                  alt="Fuel Analytics Dashboard"
+                  className="w-full h-auto"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextSibling.style.display = 'flex';
+                  }}
+                />
+                <div className="hidden h-80 bg-gray-100 items-center justify-center">
+                  <div className="text-center">
+                    <Fuel className="h-16 w-16 text-primary mx-auto mb-4" />
+                    <p className="text-gray-500">Fuel Analytics Dashboard</p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
-          <div className="bg-gray-100 rounded-2xl h-80 flex items-center justify-center">
-            <Fuel className="h-24 w-24 text-gray-300" />
           </div>
         </div>
+      </section>
 
-        <div className="mb-20">
-          <h2 className="text-3xl font-bold text-navy mb-12">Key Features</h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="flex gap-4">
-                <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <f.icon className="h-6 w-6 text-primary" />
+      {/* Features */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">Stop fuel theft, start saving</h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {features.map((feature) => (
+              <div key={feature.title} className="text-center">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-4">
+                  <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold text-navy mb-1">{f.title}</h3>
-                  <p className="text-gray-600">{f.description}</p>
-                </div>
+                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
+                <p className="text-gray-600">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
+      </section>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-xl font-semibold text-navy">Data Fields</h3>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-200">
-                    <th className="text-left py-2 text-navy font-medium">Field</th>
-                    <th className="text-left py-2 text-navy font-medium">Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {dataFields.map((f) => (
-                    <tr key={f.field} className="border-b border-gray-100">
-                      <td className="py-2 font-mono text-primary">{f.field}</td>
-                      <td className="py-2 text-gray-600">{f.type}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+      {/* How It Works */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-navy mb-4">How fuel monitoring works</h2>
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8">
-            <div className="flex items-center mb-6">
-              <Code className="h-6 w-6 text-primary mr-2" />
-              <h3 className="text-xl font-semibold text-navy">Event Types</h3>
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                step: '01',
+                title: 'Sensor Installation',
+                description: 'Ultrasonic fuel sensor installed on fuel tank. Non-intrusive, no drilling required.',
+              },
+              {
+                step: '02',
+                title: 'Continuous Monitoring',
+                description: 'Sensor measures fuel level every 30 seconds with ±1% accuracy.',
+              },
+              {
+                step: '03',
+                title: 'Smart Detection',
+                description: 'AI detects refuels, thefts, and anomalies automatically.',
+              },
+            ].map((item) => (
+              <div key={item.step} className="relative">
+                <span className="text-6xl font-bold text-gray-200">{item.step}</span>
+                <h3 className="text-xl font-semibold text-navy mt-4 mb-2">{item.title}</h3>
+                <p className="text-gray-600">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ROI Calculator */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-navy rounded-2xl p-8 lg:p-12 text-white">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold mb-4">Typical ROI</h2>
+              <p className="text-gray-300">Based on customer data across 500+ fleets</p>
             </div>
-            <div className="space-y-3">
-              {events.map((e) => (
-                <div key={e.event} className="flex justify-between items-center py-2 border-b border-gray-100">
-                  <span className="font-mono text-sm text-primary">{e.event}</span>
-                  <span className="text-sm text-gray-600">{e.description}</span>
-                </div>
-              ))}
+
+            <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div>
+                <p className="text-5xl font-bold text-primary mb-2">23%</p>
+                <p className="text-gray-300">Average fuel cost reduction</p>
+              </div>
+              <div>
+                <p className="text-5xl font-bold text-primary mb-2">3mo</p>
+                <p className="text-gray-300">Payback period</p>
+              </div>
+              <div>
+                <p className="text-5xl font-bold text-primary mb-2">15L+</p>
+                <p className="text-gray-300">Avg. theft prevented/year</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Developer Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-navy mb-8">Developer Integration</h2>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gray-900 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Data Fields</h3>
+              <pre className="text-sm text-gray-300 overflow-x-auto">
+{
+`{
+  "fuel_liters": 45.5,
+  "fuel_raw": 892,
+  "sensor_type": "ultrasonic",
+  "calibration_profile": "tank_100l",
+  "temperature": 32.5
+}`}
+              </pre>
+            </div>
+
+            <div className="bg-gray-900 rounded-xl p-6">
+              <h3 className="text-lg font-semibold text-white mb-4">Webhook Events</h3>
+              <pre className="text-sm text-gray-300 overflow-x-auto">
+{
+`{
+  "event": "fuel.theft_alert",
+  "vehicle_id": "VH001",
+  "drop_liters": 15.2,
+  "location": {...}
+}`}
+              </pre>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-navy mb-4">Start saving fuel today</h2>
+          <p className="text-lg text-gray-600 mb-8">
+            Join hundreds of fleets that have reduced fuel costs by 20%+.
+          </p>
+          <Link
+            to="/company/contact"
+            className="inline-flex items-center justify-center px-8 py-4 bg-navy text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors"
+          >
+            Get Started
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
+        </div>
+      </section>
     </div>
   );
 };
