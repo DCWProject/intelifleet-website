@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned, TrendingUp, ArrowUp, ArrowDown } from 'lucide-react';
 import LiveFleetAnimation from '../components/LiveFleetAnimation.jsx';
+import RealTimeMapAnimation from '../components/RealTimeMapAnimation.jsx';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
@@ -242,9 +243,9 @@ const Home = () => {
                 </div>
 
                 <div className="p-6">
-                  {/* Map Area */}
-                  <div className="relative bg-gray-50 dark:bg-gray-700 rounded-2xl h-48 mb-4 overflow-hidden">
-                    <LiveFleetAnimation />
+                  {/* Map Area with Real-time Vehicle Animation */}
+                  <div className="relative rounded-2xl h-48 mb-4 overflow-hidden">
+                    <RealTimeMapAnimation />
                   </div>
 
                   {/* Alert Cards */}
