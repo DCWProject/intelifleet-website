@@ -1,10 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned, TrendingUp } from 'lucide-react';
-import LiveFleetAnimation from '../components/LiveFleetAnimation.jsx';
+import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned, TrendingUp, ArrowUp, ArrowDown } from 'lucide-react';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
+  const [vehicleCount, setVehicleCount] = useState(2024);
+
+  // Animate vehicle count
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setVehicleCount(prev => prev + Math.floor(Math.random() * 3) - 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const pillars = [
     {
@@ -164,6 +172,10 @@ const Home = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="max-w-xl">
+              <div className="inline-flex items-center px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-sm font-medium mb-6">
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+                Now with AI-powered insights
+              </div>
               <h1 className="text-4xl lg:text-6xl font-bold text-navy dark:text-white leading-tight mb-6">
                 Real-time Fleet Intelligence for every vehicle.
               </h1>
@@ -185,17 +197,149 @@ const Home = () => {
                   Explore the Product
                 </Link>
               </div>
+              <div className="mt-8 flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex -space-x-2">
+                  {[1,2,3,4].map((i) => (
+                    <div key={i} className="w-8 h-8 rounded-full bg-gray-300 dark:bg-gray-600 border-2 border-white dark:border-gray-800"></div>
+                  ))}
+                </div>
+                <span>Trusted by 500+ fleet operators</span>
+              </div>
             </div>
 
-            {/* Right Visual - Live Fleet Animation */}
+            {/* Right Visual - Live Dashboard */}
             <div className="relative">
-              <LiveFleetAnimation />
+              <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+                {/* Window Header */}
+                <div className="flex items-center justify-between px-4 py-3 border-b border-gray-100 dark:border-gray-700">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                  </div>
+                  <span className="text-sm text-gray-400 dark:text-gray-500">Live Dashboard</span>
+                  <div className="flex items-center space-x-2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+                    Real-time
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  {/* Map Area */}
+                  <div className="relative bg-gray-50 dark:bg-gray-700 rounded-2xl h-48 mb-4 overflow-hidden">
+                    {/* Grid pattern */}
+                    <div className="absolute inset-0 opacity-20">
+                      <div className="w-full h-full" style={{
+                        backgroundImage: 'linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(90deg, #94a3b8 1px, transparent 1px)',
+                        backgroundSize: '40px 40px'
+                      }}></div>
+                    </div>
+                    
+                    {/* Moving vehicle indicators */}
+                    <div className="absolute top-4 left-8 w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg">
+                      <MapPin className="w-4 h-4 text-white" />
+                    </div>
+                    <div className="absolute top-12 right-12 w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-lg">
+                      <TrendingUp className="w-4 h-4 text-white" />
+                    </div>
+                    
+                    <div className="absolute bottom-8 left-16 w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center shadow-lg">
+                      <Droplets className="w-4 h-4 text-white" />
+                    </div>
+                    
+                    <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
+                      <div className="bg-green-500 text-white p-1 rounded-lg">
+                        <ArrowUp className="w-4 h-4" />
+                      </div>
+                    </div>
+                    
+                    <div className="absolute bottom-4 right-16">
+                      <div className="bg-blue-500 text-white p-1 rounded-lg">
+                        <ArrowDown className="w-4 h-4" />
+                      </div>
+                    </div>
+                    
+                    {/* Center Counter */}
+                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 rounded-xl shadow-xl px-6 py-4 text-center">
+                      <p className="text-3xl font-bold text-navy dark:text-white">{vehicleCount.toLocaleString()}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Vehicles Online</p>
+                    </div>
+                  </div>
+
+                  {/* Alert Cards */}
+                  <div className="grid grid-cols-3 gap-3 mb-4">
+                    <div className="bg-red-50 dark:bg-red-900/20 rounded-xl p-3 border border-red-100 dark:border-red-900/30">
+                      <div className="flex items-center space-x-1 mb-1">
+                        <Fuel className="w-4 h-4 text-red-500" />
+                        <span className="text-xs font-medium text-red-600 dark:text-red-400">Fuel Alert</span>
+                      </div>
+                      <p className="text-lg font-bold text-navy dark:text-white">-15L</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Theft detected</p>
+                    </div>
+
+                    <div className="bg-green-50 dark:bg-green-900/20 rounded-xl p-3 border border-green-100 dark:border-green-900/30">
+                      <div className="flex items-center space-x-1 mb-1">
+                        <Droplets className="w-4 h-4 text-green-500" />
+                        <span className="text-xs font-medium text-green-600 dark:text-green-400">Cleaning ON</span>
+                      </div>
+                      <p className="text-lg font-bold text-navy dark:text-white">3</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Active sweepers</p>
+                    </div>
+
+                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl p-3 border border-blue-100 dark:border-blue-900/30">
+                      <div className="flex items-center space-x-1 mb-1">
+                        <Shield className="w-4 h-4 text-blue-500" />
+                        <span className="text-xs font-medium text-blue-600 dark:text-blue-400">Uptime</span>
+                      </div>
+                      <p className="text-lg font-bold text-navy dark:text-white">99.7%</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">This month</p>
+                    </div>
+                  </div>
+
+                  {/* Fleet Activity Chart */}
+                  <div>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm font-medium text-navy dark:text-white">Fleet Activity - 2024</span>
+                      <div className="flex items-center text-green-500 text-xs">
+                        <ArrowUp className="w-3 h-3 mr-1" />
+                        <span>24% vs last year</span>
+                      </div>
+                    </div>
+                    <div className="flex items-end justify-between h-16 space-x-1">
+                      {[40, 65, 45, 80, 55, 85, 60, 75, 50, 90, 70, 78].map((h, i) => (
+                        <div 
+                          key={i} 
+                          className="flex-1 bg-primary rounded-t-sm"
+                          style={{ height: `${h}%`, opacity: 0.6 + (i * 0.03) }}
+                        ></div>
+                      ))}
+                    </div>
+                    <div className="flex justify-between mt-1 text-xs text-gray-400">
+                      <span>Jan</span>
+                      <span>Dec 2024</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Security Badge */}
+                <div className="px-6 pb-4">
+                  <div className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-3 flex items-center space-x-3">
+                    <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                      <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-navy dark:text-white text-sm">Secure & Reliable</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">ISO 27001 Certified</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Trusted By Section */}
+      {/* Trust Logos */}
       <section className="py-12 border-y border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-center text-sm text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-8">
@@ -207,100 +351,6 @@ const Home = () => {
                 {name}
               </span>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Fleet Activity Dashboard */}
-      <section className="py-16 bg-white dark:bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
-            {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-700">
-              <div className="flex items-center space-x-2">
-                <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                <div className="w-3 h-3 rounded-full bg-green-400"></div>
-              </div>
-              <span className="text-sm text-gray-400 dark:text-gray-500">Live Dashboard</span>
-              <div className="flex items-center space-x-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                <span>Real-time</span>
-              </div>
-            </div>
-
-            {/* Main Map Area with Vehicle Count */}
-            <div className="relative p-6">
-              <LiveFleetAnimation />
-            </div>
-
-            {/* Alert Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-6 pb-6">
-              <div className="bg-red-50 dark:bg-red-900/20 rounded-2xl p-4 border border-red-100 dark:border-red-900/30">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Fuel className="w-5 h-5 text-red-500" />
-                  <span className="text-sm font-medium text-red-600 dark:text-red-400">Fuel Alert</span>
-                </div>
-                <p className="text-2xl font-bold text-navy dark:text-white">-15L</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Theft detected</p>
-              </div>
-
-              <div className="bg-green-50 dark:bg-green-900/20 rounded-2xl p-4 border border-green-100 dark:border-green-900/30">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Droplets className="w-5 h-5 text-green-500" />
-                  <span className="text-sm font-medium text-green-600 dark:text-green-400">Cleaning ON</span>
-                </div>
-                <p className="text-2xl font-bold text-navy dark:text-white">3</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Active sweepers</p>
-              </div>
-
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-4 border border-blue-100 dark:border-blue-900/30">
-                <div className="flex items-center space-x-2 mb-2">
-                  <Shield className="w-5 h-5 text-blue-500" />
-                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">Uptime</span>
-                </div>
-                <p className="text-2xl font-bold text-navy dark:text-white">99.7%</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">This month</p>
-              </div>
-            </div>
-
-            {/* Fleet Activity Chart */}
-            <div className="px-6 pb-6">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-navy dark:text-white">Fleet Activity - 2024</h3>
-                <div className="flex items-center text-green-500 text-sm font-medium">
-                  <TrendingUp className="w-4 h-4 mr-1" />
-                  <span>24% vs last year</span>
-                </div>
-              </div>
-
-              {/* Bar Chart */}
-              <div className="flex items-end justify-between h-32 space-x-2">
-                {[65, 85, 55, 90, 70, 95, 75, 88, 60, 92, 78, 85].map((height, i) => (
-                  <div key={i} className="flex-1 flex flex-col items-center">
-                    <div 
-                      className="w-full bg-primary rounded-t-lg transition-all duration-500 hover:opacity-80"
-                      style={{ height: `${height}%` }}
-                    ></div>
-                  </div>
-                ))}
-              </div>
-              <div className="flex justify-between mt-2 text-xs text-gray-400">
-                <span>Jan</span>
-                <span className="ml-auto">Dec 2024</span>
-              </div>
-            </div>
-
-            {/* Security Badge */}
-            <div className="mx-6 mb-6 bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 flex items-center space-x-3">
-              <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
-                <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
-              </div>
-              <div>
-                <p className="font-semibold text-navy dark:text-white">Secure & Reliable</p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">ISO 27001 Certified</p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
