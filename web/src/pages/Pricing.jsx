@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Check, X, HelpCircle, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
+import { Check, X, ChevronDown, ChevronUp, ArrowRight } from 'lucide-react';
 
 const Pricing = () => {
   const [openFaq, setOpenFaq] = useState(null);
@@ -121,15 +121,15 @@ const Pricing = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6">
               Simple, transparent pricing
             </h1>
-            <p className="text-xl text-gray-600 mb-4">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-4">
               Pay per vehicle, per month. No hidden fees.
             </p>
             <p className="text-primary font-medium">
@@ -140,7 +140,7 @@ const Pricing = () => {
       </section>
 
       {/* Pricing Cards */}
-      <section className="py-12">
+      <section className="py-12 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {plans.map((plan) => (
@@ -148,8 +148,8 @@ const Pricing = () => {
                 key={plan.name}
                 className={`relative rounded-2xl p-6 ${
                   plan.popular
-                    ? 'bg-navy text-white ring-4 ring-primary/20'
-                    : 'bg-white border border-gray-100'
+                    ? 'bg-navy dark:bg-primary text-white dark:text-navy ring-4 ring-primary/20'
+                    : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700'
                 }`}
               >
                 {plan.popular && (
@@ -159,19 +159,19 @@ const Pricing = () => {
                 )}
                 
                 <div className="mb-6">
-                  <h3 className={`text-xl font-semibold mb-1 ${plan.popular ? 'text-white' : 'text-navy'}`}>
+                  <h3 className={`text-xl font-semibold mb-1 ${plan.popular ? 'text-white dark:text-navy' : 'text-navy dark:text-white'}`}>
                     {plan.name}
                   </h3>
-                  <p className={`text-sm ${plan.popular ? 'text-gray-300' : 'text-gray-500'}`}>
+                  <p className={`text-sm ${plan.popular ? 'text-gray-300 dark:text-navy/70' : 'text-gray-500 dark:text-gray-400'}`}>
                     {plan.description}
                   </p>
                 </div>
 
                 <div className="mb-6">
-                  <span className={`text-4xl font-bold ${plan.popular ? 'text-white' : 'text-navy'}`}>
+                  <span className={`text-4xl font-bold ${plan.popular ? 'text-white dark:text-navy' : 'text-navy dark:text-white'}`}>
                     {plan.price}
                   </span>
-                  <span className={`text-sm ${plan.popular ? 'text-gray-300' : 'text-gray-500'}`}>
+                  <span className={`text-sm ${plan.popular ? 'text-gray-300 dark:text-navy/70' : 'text-gray-500 dark:text-gray-400'}`}>
                     {plan.period}
                   </span>
                 </div>
@@ -182,9 +182,9 @@ const Pricing = () => {
                       {feature.included ? (
                         <Check className={`h-5 w-5 mr-3 flex-shrink-0 ${plan.popular ? 'text-primary' : 'text-green-500'}`} />
                       ) : (
-                        <X className="h-5 w-5 mr-3 flex-shrink-0 text-gray-300" />
+                        <X className="h-5 w-5 mr-3 flex-shrink-0 text-gray-300 dark:text-gray-600" />
                       )}
-                      <span className={`text-sm ${feature.included ? (plan.popular ? 'text-gray-200' : 'text-gray-600') : 'text-gray-400'}`}>
+                      <span className={`text-sm ${feature.included ? (plan.popular ? 'text-gray-200 dark:text-navy/80' : 'text-gray-600 dark:text-gray-300') : 'text-gray-400 dark:text-gray-500'}`}>
                         {feature.name}
                       </span>
                     </li>
@@ -196,7 +196,7 @@ const Pricing = () => {
                   className={`block w-full text-center py-3 rounded-lg font-medium transition-colors ${
                     plan.popular
                       ? 'bg-primary text-navy hover:bg-opacity-90'
-                      : 'bg-navy text-white hover:bg-opacity-90'
+                      : 'bg-navy dark:bg-primary text-white dark:text-navy hover:bg-opacity-90'
                   }`}
                 >
                   {plan.cta}
@@ -208,21 +208,21 @@ const Pricing = () => {
       </section>
 
       {/* Hardware Add-ons */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-4">Hardware & Sensors</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Hardware & Sensors</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
               One-time costs for physical devices
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {hardwareAddons.map((item) => (
-              <div key={item.name} className="bg-white rounded-xl p-4 border border-gray-100 flex justify-between items-center">
+              <div key={item.name} className="bg-white dark:bg-gray-700 rounded-xl p-4 border border-gray-100 dark:border-gray-600 flex justify-between items-center">
                 <div>
-                  <p className="font-medium text-navy">{item.name}</p>
-                  <p className="text-sm text-gray-500">{item.note}</p>
+                  <p className="font-medium text-navy dark:text-white">{item.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{item.note}</p>
                 </div>
                 <span className="text-lg font-semibold text-primary">{item.price}</span>
               </div>
@@ -232,20 +232,20 @@ const Pricing = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-4">Frequently asked questions</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Frequently asked questions</h2>
           </div>
 
           <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <div key={index} className="border border-gray-100 rounded-xl overflow-hidden">
+              <div key={index} className="border border-gray-100 dark:border-gray-700 rounded-xl overflow-hidden">
                 <button
                   onClick={() => setOpenFaq(openFaq === index ? null : index)}
-                  className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 transition-colors"
+                  className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                 >
-                  <span className="font-medium text-navy">{faq.question}</span>
+                  <span className="font-medium text-navy dark:text-white">{faq.question}</span>
                   {openFaq === index ? (
                     <ChevronUp className="h-5 w-5 text-gray-400" />
                   ) : (
@@ -254,7 +254,7 @@ const Pricing = () => {
                 </button>
                 {openFaq === index && (
                   <div className="px-4 pb-4">
-                    <p className="text-gray-600">{faq.answer}</p>
+                    <p className="text-gray-600 dark:text-gray-400">{faq.answer}</p>
                   </div>
                 )}
               </div>
@@ -264,7 +264,7 @@ const Pricing = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-navy text-white">
+      <section className="py-20 bg-navy dark:bg-gray-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Still have questions?</h2>
           <p className="text-lg text-gray-300 mb-8">

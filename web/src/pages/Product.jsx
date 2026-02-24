@@ -10,7 +10,7 @@ const Product = () => {
       description: 'Real-time GPS tracking with 10-second updates. Monitor location, speed, heading, and ignition status across your entire fleet.',
       features: ['Route playback', 'Geofencing', 'Speed alerts', 'Ignition monitoring'],
       path: '/product/live-tracking',
-      color: 'bg-blue-50',
+      color: 'bg-blue-50 dark:bg-blue-900/30',
     },
     {
       icon: Fuel,
@@ -18,7 +18,7 @@ const Product = () => {
       description: 'Advanced fuel monitoring with ultrasonic sensors. Detect theft, track efficiency, and optimize costs.',
       features: ['Theft detection', 'Refuel alerts', 'Efficiency reports', 'Tank calibration'],
       path: '/product/fuel-intelligence',
-      color: 'bg-green-50',
+      color: 'bg-green-50 dark:bg-green-900/30',
     },
     {
       icon: Droplets,
@@ -26,7 +26,7 @@ const Product = () => {
       description: 'Specialized monitoring for sweeping and cleaning vehicles. Verify PTO activity and coverage areas.',
       features: ['PTO monitoring', 'Coverage maps', 'Cleaning verification', 'Missed zone alerts'],
       path: '/product/sweeping-intelligence',
-      color: 'bg-cyan-50',
+      color: 'bg-cyan-50 dark:bg-cyan-900/30',
     },
     {
       icon: Users,
@@ -34,7 +34,7 @@ const Product = () => {
       description: 'Comprehensive driver behavior analysis. Score performance, reduce risk, and improve safety.',
       features: ['Behavior scoring', 'Overspeed alerts', 'Harsh event detection', 'Driver leaderboard'],
       path: '/product/driver-intelligence',
-      color: 'bg-purple-50',
+      color: 'bg-purple-50 dark:bg-purple-900/30',
     },
     {
       icon: Wrench,
@@ -42,7 +42,7 @@ const Product = () => {
       description: 'Proactive maintenance scheduling based on mileage, engine hours, or time intervals.',
       features: ['Service reminders', 'Maintenance logs', 'Parts tracking', 'Cost analysis'],
       path: '/product/maintenance',
-      color: 'bg-orange-50',
+      color: 'bg-orange-50 dark:bg-orange-900/30',
     },
     {
       icon: Bell,
@@ -50,7 +50,7 @@ const Product = () => {
       description: '24/7 security monitoring with intelligent alerts for unauthorized access and unusual activity.',
       features: ['Unauthorized ignition', 'Off-hours alerts', 'Geo-locking', 'Panic button'],
       path: '/product/security-alerts',
-      color: 'bg-red-50',
+      color: 'bg-red-50 dark:bg-red-900/30',
     },
     {
       icon: BarChart3,
@@ -58,7 +58,7 @@ const Product = () => {
       description: 'Comprehensive reporting suite with customizable dashboards and exportable MIS reports.',
       features: ['MIS reports', 'Custom dashboards', 'Data exports', 'Scheduled reports'],
       path: '/product/reports-analytics',
-      color: 'bg-indigo-50',
+      color: 'bg-indigo-50 dark:bg-indigo-900/30',
     },
   ];
 
@@ -72,28 +72,28 @@ const Product = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6">
               Fleet intelligence that just works
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Everything you need to track, monitor, and optimize your fleet — in one unified platform.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
                 to="/company/contact"
-                className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-navy dark:bg-primary text-white dark:text-navy font-medium rounded-lg hover:bg-opacity-90 transition-colors"
               >
                 Book a Demo
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
               <Link
                 to="/pricing"
-                className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy dark:border-primary text-navy dark:text-primary font-medium rounded-lg hover:bg-navy dark:hover:bg-primary hover:text-white dark:hover:text-navy transition-colors"
               >
                 View Pricing
               </Link>
@@ -103,11 +103,11 @@ const Product = () => {
       </section>
 
       {/* Product Modules */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Seven powerful modules</h2>
-            <p className="text-lg text-gray-600">
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Seven powerful modules</h2>
+            <p className="text-lg text-gray-600 dark:text-gray-400">
               Start with what you need. Add more as you grow.
             </p>
           </div>
@@ -117,23 +117,23 @@ const Product = () => {
               <Link
                 key={module.title}
                 to={module.path}
-                className="group flex gap-6 p-6 rounded-2xl border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all"
+                className="group flex gap-6 p-6 rounded-2xl border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800 hover:shadow-lg hover:border-primary/20 transition-all"
               >
                 <div className={`flex-shrink-0 w-16 h-16 ${module.color} rounded-xl flex items-center justify-center`}>
-                  <module.icon className="h-8 w-8 text-navy" />
+                  <module.icon className="h-8 w-8 text-navy dark:text-white" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-semibold text-navy mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold text-navy dark:text-white mb-2 group-hover:text-primary transition-colors">
                     {module.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
                     {module.description}
                   </p>
                   <ul className="flex flex-wrap gap-2 mb-4">
                     {module.features.map((feature) => (
                       <span 
                         key={feature}
-                        className="px-3 py-1 bg-gray-100 text-gray-600 text-sm rounded-full"
+                        className="px-3 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 text-sm rounded-full"
                       >
                         {feature}
                       </span>
@@ -151,14 +151,14 @@ const Product = () => {
       </section>
 
       {/* Device Integrations */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-navy mb-4">
+              <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">
                 Works with your hardware
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
                 InteliFleet integrates with 50+ GPS devices and sensors. Use your existing hardware or let us recommend the best fit.
               </p>
               <Link
@@ -172,9 +172,9 @@ const Product = () => {
 
             <div className="grid grid-cols-2 gap-4">
               {integrations.map((item) => (
-                <div key={item.name} className="bg-white rounded-xl p-4 border border-gray-100">
-                  <p className="font-semibold text-navy">{item.name}</p>
-                  <p className="text-sm text-gray-500">{item.count}</p>
+                <div key={item.name} className="bg-white dark:bg-gray-700 rounded-xl p-4 border border-gray-100 dark:border-gray-600">
+                  <p className="font-semibold text-navy dark:text-white">{item.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{item.count}</p>
                 </div>
               ))}
             </div>
@@ -183,10 +183,10 @@ const Product = () => {
       </section>
 
       {/* Platform Features */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Built for scale</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Built for scale</h2>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
@@ -217,8 +217,8 @@ const Product = () => {
               },
             ].map((feature) => (
               <div key={feature.title} className="text-center">
-                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-navy dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -226,7 +226,7 @@ const Product = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-navy text-white">
+      <section className="py-20 bg-navy dark:bg-gray-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Ready to see it in action?</h2>
           <p className="text-lg text-gray-300 mb-8">

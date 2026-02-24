@@ -9,48 +9,48 @@ const Solutions = () => {
       title: 'Individual Owners',
       description: 'Perfect for personal vehicle owners who want theft protection, maintenance tracking, and peace of mind.',
       path: '/solutions/individual-owners',
-      color: 'bg-blue-50',
+      color: 'bg-blue-50 dark:bg-blue-900/30',
     },
     {
       icon: Truck,
       title: 'Logistics & Transport',
       description: 'Fleet tracking, route optimization, and delivery verification for logistics companies.',
       path: '/solutions/logistics-transporters',
-      color: 'bg-green-50',
+      color: 'bg-green-50 dark:bg-green-900/30',
     },
     {
       icon: Bus,
       title: 'Bus Operators',
       description: 'Passenger safety, schedule adherence, and route compliance for bus fleets.',
       path: '/solutions/bus-operators',
-      color: 'bg-purple-50',
+      color: 'bg-purple-50 dark:bg-purple-900/30',
     },
     {
       icon: Building2,
       title: 'Municipal Sweeping',
       description: 'Cleaning verification, coverage tracking, and proof-of-work for municipal vehicles.',
       path: '/solutions/municipal-sweeping',
-      color: 'bg-cyan-50',
+      color: 'bg-cyan-50 dark:bg-cyan-900/30',
     },
     {
       icon: Hammer,
       title: 'Construction & Industrial',
       description: 'Equipment tracking, theft prevention, and utilization monitoring for heavy machinery.',
       path: '/solutions/construction-industrial',
-      color: 'bg-orange-50',
+      color: 'bg-orange-50 dark:bg-orange-900/30',
     },
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6">
               Solutions for every industry
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Tailored fleet management solutions designed for your specific industry needs and challenges.
             </p>
           </div>
@@ -58,7 +58,7 @@ const Solutions = () => {
       </section>
 
       {/* Solutions Grid */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {solutions.map((solution) => (
@@ -68,13 +68,13 @@ const Solutions = () => {
                 className="group block"
               >
                 <div className={`${solution.color} rounded-2xl p-8 h-full hover:shadow-lg transition-shadow`}>
-                  <div className="inline-flex items-center justify-center w-14 h-14 bg-white rounded-xl mb-6 shadow-sm">
-                    <solution.icon className="h-7 w-7 text-navy" />
+                  <div className="inline-flex items-center justify-center w-14 h-14 bg-white dark:bg-gray-700 rounded-xl mb-6 shadow-sm">
+                    <solution.icon className="h-7 w-7 text-navy dark:text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-navy mb-3">
+                  <h3 className="text-xl font-semibold text-navy dark:text-white mb-3">
                     {solution.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">
                     {solution.description}
                   </p>
                   <span className="inline-flex items-center text-primary font-medium">
@@ -89,7 +89,7 @@ const Solutions = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-navy text-white">
+      <section className="py-20 bg-navy dark:bg-gray-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Not sure which solution fits?</h2>
           <p className="text-lg text-gray-300 mb-8">

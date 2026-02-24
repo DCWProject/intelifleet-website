@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Smartphone, MapPin, Bell, History, Users, Apple, Play } from 'lucide-react';
+import { ArrowRight, MapPin, Bell, History, Users, Apple, Play } from 'lucide-react';
 
 const Apps = () => {
   const iosFeatures = [
@@ -22,15 +22,15 @@ const Apps = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+            <h1 className="text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6">
               Fleet management in your pocket
             </h1>
-            <p className="text-xl text-gray-600 mb-8">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
               Track vehicles, receive alerts, and manage your fleet on the go with our mobile apps for iOS and Android.
             </p>
           </div>
@@ -38,24 +38,24 @@ const Apps = () => {
       </section>
 
       {/* App Comparison */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8">
             {/* iOS Card */}
-            <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 lg:p-12">
               <div className="flex items-center mb-6">
-                <div className="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center mr-4">
-                  <Apple className="h-8 w-8 text-white" />
+                <div className="w-16 h-16 bg-navy dark:bg-primary rounded-2xl flex items-center justify-center mr-4">
+                  <Apple className="h-8 w-8 text-white dark:text-navy" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-navy">iOS App</h2>
-                  <p className="text-gray-500">For iPhone and iPad</p>
+                  <h2 className="text-2xl font-bold text-navy dark:text-white">iOS App</h2>
+                  <p className="text-gray-500 dark:text-gray-400">For iPhone and iPad</p>
                 </div>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {iosFeatures.map((feature) => (
-                  <li key={feature} className="flex items-center text-gray-700">
+                  <li key={feature} className="flex items-center text-gray-700 dark:text-gray-300">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3" />
                     {feature}
                   </li>
@@ -64,7 +64,7 @@ const Apps = () => {
 
               <Link
                 to="/apps/ios"
-                className="inline-flex items-center justify-center w-full px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                className="inline-flex items-center justify-center w-full px-6 py-3 bg-navy dark:bg-primary text-white dark:text-navy font-medium rounded-lg hover:bg-opacity-90 transition-colors"
               >
                 Learn more about iOS
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -72,20 +72,20 @@ const Apps = () => {
             </div>
 
             {/* Android Card */}
-            <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+            <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 lg:p-12">
               <div className="flex items-center mb-6">
                 <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mr-4">
                   <Play className="h-8 w-8 text-navy" />
                 </div>
                 <div>
-                  <h2 className="text-2xl font-bold text-navy">Android App</h2>
-                  <p className="text-gray-500">For Android phones and tablets</p>
+                  <h2 className="text-2xl font-bold text-navy dark:text-white">Android App</h2>
+                  <p className="text-gray-500 dark:text-gray-400">For Android phones and tablets</p>
                 </div>
               </div>
 
               <ul className="space-y-3 mb-8">
                 {androidFeatures.map((feature) => (
-                  <li key={feature} className="flex items-center text-gray-700">
+                  <li key={feature} className="flex items-center text-gray-700 dark:text-gray-300">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3" />
                     {feature}
                   </li>
@@ -94,7 +94,7 @@ const Apps = () => {
 
               <Link
                 to="/apps/android"
-                className="inline-flex items-center justify-center w-full px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
+                className="inline-flex items-center justify-center w-full px-6 py-3 border-2 border-navy dark:border-primary text-navy dark:text-primary font-medium rounded-lg hover:bg-navy dark:hover:bg-primary hover:text-white dark:hover:text-navy transition-colors"
               >
                 Learn more about Android
                 <ArrowRight className="ml-2 h-5 w-5" />
@@ -105,10 +105,10 @@ const Apps = () => {
       </section>
 
       {/* Common Features */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Powerful features, everywhere</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Powerful features, everywhere</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -138,8 +138,8 @@ const Apps = () => {
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-4">
                   <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-navy dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -147,10 +147,10 @@ const Apps = () => {
       </section>
 
       {/* FAQ */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-navy mb-4">Common questions</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Common questions</h2>
           </div>
 
           <div className="space-y-4">
@@ -172,9 +172,9 @@ const Apps = () => {
                 a: 'Yes. All data is encrypted in transit using TLS 1.3. We also support biometric authentication on supported devices.',
               },
             ].map((item, i) => (
-              <div key={i} className="border border-gray-100 rounded-xl p-6">
-                <h3 className="font-semibold text-navy mb-2">{item.q}</h3>
-                <p className="text-gray-600">{item.a}</p>
+              <div key={i} className="border border-gray-100 dark:border-gray-700 rounded-xl p-6 bg-white dark:bg-gray-800">
+                <h3 className="font-semibold text-navy dark:text-white mb-2">{item.q}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{item.a}</p>
               </div>
             ))}
           </div>
