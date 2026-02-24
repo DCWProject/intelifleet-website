@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned } from 'lucide-react';
+import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned, TrendingUp } from 'lucide-react';
+import LiveFleetAnimation from '../components/LiveFleetAnimation.jsx';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
@@ -186,42 +187,9 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Right Visual - Mock Dashboard */}
+            {/* Right Visual - Live Fleet Animation */}
             <div className="relative">
-              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="flex items-center space-x-2">
-                    <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  </div>
-                  <span className="text-sm text-gray-400 dark:text-gray-500">Live Dashboard</span>
-                </div>
-                
-                {/* Mock Map */}
-                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-48 mb-4 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                    <p className="text-sm text-gray-500 dark:text-gray-400">24 vehicles tracked</p>
-                  </div>
-                </div>
-
-                {/* Mock Stats */}
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-red-50 dark:bg-red-900/30 rounded-lg p-3">
-                    <p className="text-xs text-red-600 dark:text-red-400 font-medium">Fuel Alert</p>
-                    <p className="text-sm font-semibold text-navy dark:text-white">-15L detected</p>
-                  </div>
-                  <div className="bg-green-50 dark:bg-green-900/30 rounded-lg p-3">
-                    <p className="text-xs text-green-600 dark:text-green-400 font-medium">Cleaning ON</p>
-                    <p className="text-sm font-semibold text-navy dark:text-white">3 vehicles</p>
-                  </div>
-                  <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3">
-                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">Uptime</p>
-                    <p className="text-sm font-semibold text-navy dark:text-white">99.7%</p>
-                  </div>
-                </div>
-              </div>
+              <LiveFleetAnimation />
             </div>
           </div>
         </div>
@@ -239,6 +207,100 @@ const Home = () => {
                 {name}
               </span>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fleet Activity Dashboard */}
+      <section className="py-16 bg-white dark:bg-gray-900">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-xl border border-gray-100 dark:border-gray-700 overflow-hidden">
+            {/* Header */}
+            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 dark:border-gray-700">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                <div className="w-3 h-3 rounded-full bg-green-400"></div>
+              </div>
+              <span className="text-sm text-gray-400 dark:text-gray-500">Live Dashboard</span>
+              <div className="flex items-center space-x-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                <span>Real-time</span>
+              </div>
+            </div>
+
+            {/* Main Map Area with Vehicle Count */}
+            <div className="relative p-6">
+              <LiveFleetAnimation />
+            </div>
+
+            {/* Alert Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 px-6 pb-6">
+              <div className="bg-red-50 dark:bg-red-900/20 rounded-2xl p-4 border border-red-100 dark:border-red-900/30">
+                <div className="flex items-center space-x-2 mb-2">
+                  <Fuel className="w-5 h-5 text-red-500" />
+                  <span className="text-sm font-medium text-red-600 dark:text-red-400">Fuel Alert</span>
+                </div>
+                <p className="text-2xl font-bold text-navy dark:text-white">-15L</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Theft detected</p>
+              </div>
+
+              <div className="bg-green-50 dark:bg-green-900/20 rounded-2xl p-4 border border-green-100 dark:border-green-900/30">
+                <div className="flex items-center space-x-2 mb-2">
+                  <Droplets className="w-5 h-5 text-green-500" />
+                  <span className="text-sm font-medium text-green-600 dark:text-green-400">Cleaning ON</span>
+                </div>
+                <p className="text-2xl font-bold text-navy dark:text-white">3</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Active sweepers</p>
+              </div>
+
+              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-4 border border-blue-100 dark:border-blue-900/30">
+                <div className="flex items-center space-x-2 mb-2">
+                  <Shield className="w-5 h-5 text-blue-500" />
+                  <span className="text-sm font-medium text-blue-600 dark:text-blue-400">Uptime</span>
+                </div>
+                <p className="text-2xl font-bold text-navy dark:text-white">99.7%</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">This month</p>
+              </div>
+            </div>
+
+            {/* Fleet Activity Chart */}
+            <div className="px-6 pb-6">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-navy dark:text-white">Fleet Activity - 2024</h3>
+                <div className="flex items-center text-green-500 text-sm font-medium">
+                  <TrendingUp className="w-4 h-4 mr-1" />
+                  <span>24% vs last year</span>
+                </div>
+              </div>
+
+              {/* Bar Chart */}
+              <div className="flex items-end justify-between h-32 space-x-2">
+                {[65, 85, 55, 90, 70, 95, 75, 88, 60, 92, 78, 85].map((height, i) => (
+                  <div key={i} className="flex-1 flex flex-col items-center">
+                    <div 
+                      className="w-full bg-primary rounded-t-lg transition-all duration-500 hover:opacity-80"
+                      style={{ height: `${height}%` }}
+                    ></div>
+                  </div>
+                ))}
+              </div>
+              <div className="flex justify-between mt-2 text-xs text-gray-400">
+                <span>Jan</span>
+                <span className="ml-auto">Dec 2024</span>
+              </div>
+            </div>
+
+            {/* Security Badge */}
+            <div className="mx-6 mb-6 bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4 flex items-center space-x-3">
+              <div className="w-10 h-10 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
+                <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+              </div>
+              <div>
+                <p className="font-semibold text-navy dark:text-white">Secure & Reliable</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">ISO 27001 Certified</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
