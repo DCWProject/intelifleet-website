@@ -36,39 +36,39 @@ const DriverIntelligence = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-20 lg:pt-24 lg:pb-28">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-16 pb-20 lg:pt-24 lg:pb-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium mb-6">
+              <div className="inline-flex items-center px-3 py-1 bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400 rounded-full text-sm font-medium mb-6">
                 <Users className="w-4 h-4 mr-2" />
                 Driver Intelligence
               </div>
-              <h1 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+              <h1 className="text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6">
                 Driver Intelligence
               </h1>
-              <p className="text-xl text-gray-600 mb-8">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
                 Understand driver behavior, reduce risk, and build a culture of safety. Score, rank, and incentivize your drivers.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/company/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy dark:bg-primary text-white dark:text-navy font-medium rounded-lg hover:bg-opacity-90 transition-colors"
                 >
                   Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-8">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-8">
               <div className="text-center mb-6">
                 <div className="inline-flex items-center justify-center w-24 h-24 bg-primary/10 rounded-full mb-4">
                   <Award className="h-12 w-12 text-primary" />
                 </div>
-                <p className="text-2xl font-bold text-navy">Driver Score: 87/100</p>
-                <p className="text-green-600 font-medium">↑ 5 points this month</p>
+                <p className="text-2xl font-bold text-navy dark:text-white">Driver Score: 87/100</p>
+                <p className="text-green-600 dark:text-green-400 font-medium">↑ 5 points this month</p>
               </div>
               <div className="space-y-3">
                 {[
@@ -79,10 +79,10 @@ const DriverIntelligence = () => {
                 ].map((item) => (
                   <div key={item.label}>
                     <div className="flex justify-between text-sm mb-1">
-                      <span className="text-gray-600">{item.label}</span>
-                      <span className="font-medium text-navy">{item.score}</span>
+                      <span className="text-gray-600 dark:text-gray-400">{item.label}</span>
+                      <span className="font-medium text-navy dark:text-white">{item.score}</span>
                     </div>
-                    <div className="h-2 bg-gray-100 rounded-full">
+                    <div className="h-2 bg-gray-100 dark:bg-gray-700 rounded-full">
                       <div 
                         className="h-full bg-primary rounded-full"
                         style={{ width: `${item.score}%` }}
@@ -97,10 +97,10 @@ const DriverIntelligence = () => {
       </section>
 
       {/* Features */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Build a safer fleet</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Build a safer fleet</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -109,8 +109,8 @@ const DriverIntelligence = () => {
                 <div className="inline-flex items-center justify-center w-14 h-14 bg-primary/10 rounded-xl mb-4">
                   <feature.icon className="h-7 w-7 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-navy mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+                <h3 className="text-lg font-semibold text-navy dark:text-white mb-2">{feature.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -118,17 +118,17 @@ const DriverIntelligence = () => {
       </section>
 
       {/* Monitored Behaviors */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-navy mb-4">Monitored behaviors</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white mb-4">Monitored behaviors</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {behaviors.map((behavior) => (
-              <div key={behavior.name} className="bg-white rounded-xl p-6 border border-gray-100">
-                <h3 className="font-semibold text-navy mb-1">{behavior.name}</h3>
-                <p className="text-gray-600 text-sm">{behavior.desc}</p>
+              <div key={behavior.name} className="bg-white dark:bg-gray-700 rounded-xl p-6 border border-gray-100 dark:border-gray-600">
+                <h3 className="font-semibold text-navy dark:text-white mb-1">{behavior.name}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{behavior.desc}</p>
               </div>
             ))}
           </div>
@@ -136,12 +136,12 @@ const DriverIntelligence = () => {
       </section>
 
       {/* Scoring Model */}
-      <section className="py-20">
+      <section className="py-20 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold text-navy mb-6">How scoring works</h2>
-              <p className="text-gray-600 mb-6">
+              <h2 className="text-3xl font-bold text-navy dark:text-white mb-6">How scoring works</h2>
+              <p className="text-gray-600 dark:text-gray-400 mb-6">
                 Our algorithm analyzes driving patterns and assigns scores based on:
               </p>
               <ul className="space-y-4">
@@ -150,8 +150,8 @@ const DriverIntelligence = () => {
                     <span className="text-primary font-bold">1</span>
                   </div>
                   <div>
-                    <p className="font-medium text-navy">Event Detection</p>
-                    <p className="text-gray-600 text-sm">Sensors detect harsh braking, acceleration, and cornering</p>
+                    <p className="font-medium text-navy dark:text-white">Event Detection</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Sensors detect harsh braking, acceleration, and cornering</p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -159,8 +159,8 @@ const DriverIntelligence = () => {
                     <span className="text-primary font-bold">2</span>
                   </div>
                   <div>
-                    <p className="font-medium text-navy">Weighting</p>
-                    <p className="text-gray-600 text-sm">Different events have different severity weights</p>
+                    <p className="font-medium text-navy dark:text-white">Weighting</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Different events have different severity weights</p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -168,13 +168,13 @@ const DriverIntelligence = () => {
                     <span className="text-primary font-bold">3</span>
                   </div>
                   <div>
-                    <p className="font-medium text-navy">Normalization</p>
-                    <p className="text-gray-600 text-sm">Scores normalized to 0-100 scale for easy comparison</p>
+                    <p className="font-medium text-navy dark:text-white">Normalization</p>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Scores normalized to 0-100 scale for easy comparison</p>
                   </div>
                 </li>
               </ul>
             </div>
-            <div className="bg-navy rounded-2xl p-8 text-white">
+            <div className="bg-navy dark:bg-gray-800 rounded-2xl p-8 text-white">
               <h3 className="text-xl font-semibold mb-6">Score Interpretation</h3>
               <div className="space-y-4">
                 <div className="flex items-center">
@@ -182,7 +182,7 @@ const DriverIntelligence = () => {
                   <span className="flex-1">90-100: Excellent</span>
                 </div>
                 <div className="flex items-center">
-                  <div className="w-4 h-4 bg-accent rounded mr-3"></div>
+                  <div className="w-4 h-4 bg-primary rounded mr-3"></div>
                   <span className="flex-1">75-89: Good</span>
                 </div>
                 <div className="flex items-center">
@@ -200,7 +200,7 @@ const DriverIntelligence = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-navy text-white">
+      <section className="py-20 bg-navy dark:bg-gray-950 text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">Build your safest fleet yet</h2>
           <p className="text-lg text-gray-300 mb-8">
