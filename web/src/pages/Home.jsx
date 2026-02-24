@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Play, Fuel, Bell, Route, Clock, MapPinned } from 'lucide-react';
+import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned } from 'lucide-react';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
@@ -156,30 +156,30 @@ const Home = () => {
   ];
 
   return (
-    <div className="bg-white">
+    <div className="bg-white dark:bg-gray-900">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-gray-50 to-white pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
             <div className="max-w-xl">
-              <h1 className="text-4xl lg:text-6xl font-bold text-navy leading-tight mb-6">
+              <h1 className="text-4xl lg:text-6xl font-bold text-navy dark:text-white leading-tight mb-6">
                 Real-time Fleet Intelligence for every vehicle.
               </h1>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
                 GPS tracking, fuel intelligence, activity verification (including sweeping/cleaning), alerts, and analytics — powered by telemetry + sensors.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/company/contact"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy dark:bg-primary text-white dark:text-navy font-medium rounded-lg hover:bg-opacity-90 transition-colors"
                 >
                   Book a Demo
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
                   to="/product"
-                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy dark:border-primary text-navy dark:text-primary font-medium rounded-lg hover:bg-navy dark:hover:bg-primary hover:text-white dark:hover:text-navy transition-colors"
                 >
                   Explore the Product
                 </Link>
@@ -188,37 +188,37 @@ const Home = () => {
 
             {/* Right Visual - Mock Dashboard */}
             <div className="relative">
-              <div className="bg-white rounded-2xl shadow-2xl border border-gray-100 p-6">
+              <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl border border-gray-100 dark:border-gray-700 p-6">
                 <div className="flex items-center justify-between mb-6">
                   <div className="flex items-center space-x-2">
                     <div className="w-3 h-3 rounded-full bg-red-400"></div>
                     <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                     <div className="w-3 h-3 rounded-full bg-green-400"></div>
                   </div>
-                  <span className="text-sm text-gray-400">Live Dashboard</span>
+                  <span className="text-sm text-gray-400 dark:text-gray-500">Live Dashboard</span>
                 </div>
                 
                 {/* Mock Map */}
-                <div className="bg-gray-100 rounded-lg h-48 mb-4 flex items-center justify-center">
+                <div className="bg-gray-100 dark:bg-gray-700 rounded-lg h-48 mb-4 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="h-12 w-12 text-primary mx-auto mb-2" />
-                    <p className="text-sm text-gray-500">24 vehicles tracked</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">24 vehicles tracked</p>
                   </div>
                 </div>
 
                 {/* Mock Stats */}
                 <div className="grid grid-cols-3 gap-4">
-                  <div className="bg-red-50 rounded-lg p-3">
-                    <p className="text-xs text-red-600 font-medium">Fuel Alert</p>
-                    <p className="text-sm font-semibold text-navy">-15L detected</p>
+                  <div className="bg-red-50 dark:bg-red-900/30 rounded-lg p-3">
+                    <p className="text-xs text-red-600 dark:text-red-400 font-medium">Fuel Alert</p>
+                    <p className="text-sm font-semibold text-navy dark:text-white">-15L detected</p>
                   </div>
-                  <div className="bg-green-50 rounded-lg p-3">
-                    <p className="text-xs text-green-600 font-medium">Cleaning ON</p>
-                    <p className="text-sm font-semibold text-navy">3 vehicles</p>
+                  <div className="bg-green-50 dark:bg-green-900/30 rounded-lg p-3">
+                    <p className="text-xs text-green-600 dark:text-green-400 font-medium">Cleaning ON</p>
+                    <p className="text-sm font-semibold text-navy dark:text-white">3 vehicles</p>
                   </div>
-                  <div className="bg-blue-50 rounded-lg p-3">
-                    <p className="text-xs text-blue-600 font-medium">Uptime</p>
-                    <p className="text-sm font-semibold text-navy">99.7%</p>
+                  <div className="bg-blue-50 dark:bg-blue-900/30 rounded-lg p-3">
+                    <p className="text-xs text-blue-600 dark:text-blue-400 font-medium">Uptime</p>
+                    <p className="text-sm font-semibold text-navy dark:text-white">99.7%</p>
                   </div>
                 </div>
               </div>
@@ -228,14 +228,14 @@ const Home = () => {
       </section>
 
       {/* Trusted By Section */}
-      <section className="py-12 border-y border-gray-100">
+      <section className="py-12 border-y border-gray-100 dark:border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-sm text-gray-400 uppercase tracking-wider mb-8">
+          <p className="text-center text-sm text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-8">
             Trusted by fleet operators across India
           </p>
           <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
             {['NorthStar Logistics', 'CleanCity Services', 'Metro Transports', 'AgriFleet India', 'Urban Movers', 'BuildRight Construction'].map((name) => (
-              <span key={name} className="text-lg font-semibold text-gray-400">
+              <span key={name} className="text-lg font-semibold text-gray-400 dark:text-gray-500">
                 {name}
               </span>
             ))}
@@ -244,7 +244,7 @@ const Home = () => {
       </section>
 
       {/* Three Pillars */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             {pillars.map((pillar) => (
@@ -252,10 +252,10 @@ const Home = () => {
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-6">
                   <pillar.icon className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold text-navy mb-3">
+                <h3 className="text-xl font-semibold text-navy dark:text-white mb-3">
                   {pillar.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-400">
                   {pillar.description}
                 </p>
               </div>
@@ -265,13 +265,13 @@ const Home = () => {
       </section>
 
       {/* Product Modules Grid */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy dark:text-white mb-4">
               Everything you need to manage your fleet
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
               Modular intelligence that grows with your operations. Start with GPS tracking and add sensors as you need them.
             </p>
           </div>
@@ -281,15 +281,15 @@ const Home = () => {
               <Link
                 key={product.title}
                 to={product.path}
-                className="group bg-white rounded-xl p-6 border border-gray-100 hover:shadow-lg hover:border-primary/20 transition-all"
+                className="group bg-white dark:bg-gray-700 rounded-xl p-6 border border-gray-100 dark:border-gray-600 hover:shadow-lg hover:border-primary/20 transition-all"
               >
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-primary/10 rounded-xl mb-4 group-hover:bg-primary/20 transition-colors">
                   <product.icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-lg font-semibold text-navy mb-2">
+                <h3 className="text-lg font-semibold text-navy dark:text-white mb-2">
                   {product.title}
                 </h3>
-                <p className="text-gray-600 text-sm mb-4">
+                <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">
                   {product.description}
                 </p>
                 <span className="inline-flex items-center text-sm font-medium text-primary">
@@ -303,10 +303,10 @@ const Home = () => {
       </section>
 
       {/* Interactive Showcase */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy dark:text-white mb-4">
               See it in action
             </h2>
           </div>
@@ -318,8 +318,8 @@ const Home = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                   activeTab === tab.id
-                    ? 'bg-navy text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    ? 'bg-navy dark:bg-primary text-white dark:text-navy'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 }`}
               >
                 <tab.icon className="mr-2 h-4 w-4" />
@@ -328,22 +328,22 @@ const Home = () => {
             ))}
           </div>
 
-          <div className="bg-gray-50 rounded-2xl p-8 lg:p-12">
+          <div className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 lg:p-12">
             <div className="grid lg:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-semibold text-navy mb-4">
+                <h3 className="text-2xl font-semibold text-navy dark:text-white mb-4">
                   {showcaseContent[activeTab].title}
                 </h3>
-                <p className="text-gray-600 text-lg">
+                <p className="text-gray-600 dark:text-gray-400 text-lg">
                   {showcaseContent[activeTab].description}
                 </p>
               </div>
-              <div className="bg-white rounded-xl shadow-lg p-6 h-64 flex items-center justify-center">
+              <div className="bg-white dark:bg-gray-700 rounded-xl shadow-lg p-6 h-64 flex items-center justify-center">
                 <div className="text-center">
                   {React.createElement(showcaseTabs.find(t => t.id === activeTab)?.icon || MapPin, {
                     className: "h-16 w-16 text-primary mx-auto mb-4"
                   })}
-                  <p className="text-gray-400">Interactive demo visualization</p>
+                  <p className="text-gray-400 dark:text-gray-500">Interactive demo visualization</p>
                 </div>
               </div>
             </div>
@@ -352,7 +352,7 @@ const Home = () => {
       </section>
 
       {/* Deployment Options */}
-      <section className="py-20 bg-navy text-white">
+      <section className="py-20 bg-navy dark:bg-gray-950 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
@@ -380,19 +380,19 @@ const Home = () => {
       </section>
 
       {/* Mobile Apps */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-6">
+              <h2 className="text-3xl lg:text-4xl font-bold text-navy dark:text-white mb-6">
                 Fleet management in your pocket
               </h2>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-lg text-gray-600 dark:text-gray-400 mb-8">
                 Track vehicles, receive alerts, and manage your fleet on the go with our mobile apps.
               </p>
               <ul className="space-y-4 mb-8">
                 {['Live tracking on map', 'Instant push alerts', 'Trip history & details', 'Driver tools & checklists'].map((feature) => (
-                  <li key={feature} className="flex items-center text-gray-700">
+                  <li key={feature} className="flex items-center text-gray-700 dark:text-gray-300">
                     <div className="w-2 h-2 bg-primary rounded-full mr-3" />
                     {feature}
                   </li>
@@ -401,22 +401,22 @@ const Home = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   to="/apps/ios"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-navy dark:bg-primary text-white dark:text-navy font-medium rounded-lg hover:bg-opacity-90 transition-colors"
                 >
                   Download for iOS
                 </Link>
                 <Link
                   to="/apps/android"
-                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
+                  className="inline-flex items-center justify-center px-6 py-3 border-2 border-navy dark:border-primary text-navy dark:text-primary font-medium rounded-lg hover:bg-navy dark:hover:bg-primary hover:text-white dark:hover:text-navy transition-colors"
                 >
                   Download for Android
                 </Link>
               </div>
             </div>
-            <div className="bg-gray-100 rounded-2xl h-96 flex items-center justify-center">
+            <div className="bg-gray-100 dark:bg-gray-700 rounded-2xl h-96 flex items-center justify-center">
               <div className="text-center">
-                <div className="w-48 h-80 bg-navy rounded-3xl mx-auto flex items-center justify-center">
-                  <span className="text-white text-sm">Mobile App Mockup</span>
+                <div className="w-48 h-80 bg-navy dark:bg-primary rounded-3xl mx-auto flex items-center justify-center">
+                  <span className="text-white dark:text-navy text-sm">Mobile App Mockup</span>
                 </div>
               </div>
             </div>
@@ -425,10 +425,10 @@ const Home = () => {
       </section>
 
       {/* Security Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-navy mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-navy dark:text-white mb-4">
               Enterprise-grade security, built in
             </h2>
           </div>
@@ -440,10 +440,10 @@ const Home = () => {
               { title: 'Audit Logs', desc: 'Complete activity trail' },
               { title: 'Data Retention', desc: 'Configurable policies' },
             ].map((item) => (
-              <div key={item.title} className="bg-white rounded-xl p-6 text-center border border-gray-100">
+              <div key={item.title} className="bg-white dark:bg-gray-700 rounded-xl p-6 text-center border border-gray-100 dark:border-gray-600">
                 <Lock className="h-8 w-8 text-primary mx-auto mb-3" />
-                <h3 className="font-semibold text-navy mb-1">{item.title}</h3>
-                <p className="text-sm text-gray-500">{item.desc}</p>
+                <h3 className="font-semibold text-navy dark:text-white mb-1">{item.title}</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -451,17 +451,17 @@ const Home = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-8">
             {testimonials.map((t) => (
-              <div key={t.author} className="bg-white rounded-xl p-8 border border-gray-100">
-                <blockquote className="text-lg text-gray-700 mb-6">
+              <div key={t.author} className="bg-white dark:bg-gray-800 rounded-xl p-8 border border-gray-100 dark:border-gray-700">
+                <blockquote className="text-lg text-gray-700 dark:text-gray-300 mb-6">
                   "{t.quote}"
                 </blockquote>
                 <div>
-                  <p className="font-semibold text-navy">{t.author}</p>
-                  <p className="text-sm text-gray-500">{t.role}, {t.company}</p>
+                  <p className="font-semibold text-navy dark:text-white">{t.author}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{t.role}, {t.company}</p>
                 </div>
               </div>
             ))}
@@ -476,10 +476,10 @@ const Home = () => {
       </section>
 
       {/* Blog Preview */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gray-50 dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center mb-12">
-            <h2 className="text-3xl font-bold text-navy">Latest from the blog</h2>
+            <h2 className="text-3xl font-bold text-navy dark:text-white">Latest from the blog</h2>
             <Link to="/company/about" className="text-primary font-medium hover:underline">
               View all posts →
             </Link>
@@ -487,16 +487,16 @@ const Home = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {blogPosts.map((post) => (
-              <div key={post.title} className="bg-white rounded-xl overflow-hidden border border-gray-100">
-                <div className="h-48 bg-gray-200" />
+              <div key={post.title} className="bg-white dark:bg-gray-700 rounded-xl overflow-hidden border border-gray-100 dark:border-gray-600">
+                <div className="h-48 bg-gray-200 dark:bg-gray-600" />
                 <div className="p-6">
                   <span className="text-xs font-medium text-primary uppercase tracking-wider">
                     {post.category}
                   </span>
-                  <h3 className="mt-2 text-lg font-semibold text-navy">
+                  <h3 className="mt-2 text-lg font-semibold text-navy dark:text-white">
                     {post.title}
                   </h3>
-                  <p className="mt-2 text-sm text-gray-500">{post.date}</p>
+                  <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{post.date}</p>
                 </div>
               </div>
             ))}
@@ -505,24 +505,24 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 lg:py-28">
+      <section className="py-20 lg:py-28 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-navy mb-6">
+          <h2 className="text-4xl lg:text-5xl font-bold text-navy dark:text-white mb-6">
             Bring certainty to fleet operations.
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
             Join hundreds of fleet operators who trust InteliFleet.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link
               to="/company/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-navy text-white font-medium rounded-lg hover:bg-opacity-90 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-navy dark:bg-primary text-white dark:text-navy font-medium rounded-lg hover:bg-opacity-90 transition-colors"
             >
               Talk to Sales
             </Link>
             <Link
               to="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-navy text-navy font-medium rounded-lg hover:bg-navy hover:text-white transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-navy dark:border-primary text-navy dark:text-primary font-medium rounded-lg hover:bg-navy dark:hover:bg-primary hover:text-white dark:hover:text-navy transition-colors"
             >
               Get Started
             </Link>

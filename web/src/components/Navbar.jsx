@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext.jsx';
+
+const baseUrl = import.meta.env.BASE_URL;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const { theme, toggleTheme } = useTheme();
 
   const navGroups = [
     {
@@ -61,13 +65,13 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-gray-100">
+    <nav className="sticky top-0 z-50 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <img 
-              src="/brand/intelifleet-dark.png" 
+              src={theme === 'dark' ? `${baseUrl}brand/intelifleet-dark.png` : `${baseUrl}brand/intelifleet-light.png`}
               alt="InteliFleet" 
               className="h-8 w-auto"
             />
@@ -82,18 +86,18 @@ const Navbar = () => {
                 onMouseEnter={() => setActiveDropdown(group.label)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
-                <button className="flex items-center px-3 py-2 text-sm font-medium text-navy hover:text-primary transition-colors uppercase tracking-wide">
+                <button className="flex items-center px-3 py-2 text-sm font-medium text-navy dark:text-white hover:text-primary transition-colors uppercase tracking-wide">
                   {group.label}
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </button>
                 
                 {activeDropdown === group.label && (
-                  <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 animate-in fade-in duration-200">
+                  <div className="absolute top-full left-0 mt-1 w-56 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-100 dark:border-gray-700 py-2 animate-in fade-in duration-200">
                     {group.links.map((link) => (
                       <Link
                         key={link.path}
                         to={link.path}
-                        className="block px-4 py-2 text-sm text-gray-600 hover:text-navy hover:bg-gray-50 transition-colors"
+                        className="block px-4 py-2 text-sm text-gray-600 dark:text-gray-300 hover:text-navy dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       >
                         {link.name}
                       </Link>
@@ -106,9 +110,18 @@ const Navbar = () => {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center space-x-3">
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg text-navy dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              aria-label={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+            >
+              {theme === 'light' ? <Moon className="h-5 w-5" /> : <Sun className="h-5 w-5" />}
+            </button>
+            
             <Link
               to="/pricing"
-              className="px-4 py-2 text-sm font-medium text-navy hover:text-primary transition-colors"
+              className="px-4 py-2 text-sm font-medium text-navy dark:text-white hover:text-primary transition-colors"
             >
               View Pricing
             </Link>
@@ -123,7 +136,7 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-navy"
+            className="lg:hidden p-2 text-navy dark:text-white"
           >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
@@ -131,11 +144,11 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden border-t border-gray-100">
+          <div className="lg:hidden border-t border-gray-100 dark:border-gray-800">
             <div className="py-4 space-y-4">
               {navGroups.map((group) => (
                 <div key={group.label} className="px-4">
-                  <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">
+                  <p className="text-xs font-semibold text-gray-400 dark:text-gray-500 uppercase tracking-wider mb-2">
                     {group.label}
                   </p>
                   <div className="space-y-1">
@@ -144,7 +157,7 @@ const Navbar = () => {
                         key={link.path}
                         to={link.path}
                         onClick={() => setIsOpen(false)}
-                        className="block py-1 text-sm text-gray-600 hover:text-navy"
+                        className="block py-1 text-sm text-gray-600 dark:text-gray-300 hover:text-navy dark:hover:text-white"
                       >
                         {link.name}
                       </Link>
@@ -152,11 +165,21 @@ const Navbar = () => {
                   </div>
                 </div>
               ))}
-              <div className="px-4 pt-4 border-t border-gray-100 space-y-2">
+              <div className="px-4 pt-4 border-t border-gray-100 dark:border-gray-800 space-y-2">
+                <button
+                  onClick={() => {
+                    toggleTheme();
+                    setIsOpen(false);
+                  }}
+                  className="flex items-center justify-center w-full py-2 text-sm font-medium text-navy dark:text-white border border-gray-200 dark:border-gray-700 rounded-lg"
+                >
+                  {theme === 'light' ? <Moon className="h-4 w-4 mr-2" /> : <Sun className="h-4 w-4 mr-2" />}
+                  {theme === 'light' ? 'Dark Mode' : 'Light Mode'}
+                </button>
                 <Link
                   to="/pricing"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full text-center py-2 text-sm font-medium text-navy border border-navy rounded-lg"
+                  className="block w-full text-center py-2 text-sm font-medium text-navy dark:text-white border border-navy dark:border-gray-600 rounded-lg"
                 >
                   View Pricing
                 </Link>

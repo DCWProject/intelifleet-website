@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Users, AlertTriangle, Award, BarChart2, Shield, Speedometer } from 'lucide-react';
+import { ArrowRight, Users, AlertTriangle, Award, BarChart2, Shield, Gauge } from 'lucide-react';
 
 const DriverIntelligence = () => {
   const features = [
