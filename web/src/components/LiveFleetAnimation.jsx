@@ -186,41 +186,18 @@ const LiveFleetAnimation = () => {
   }, [vehicles.length]);
 
   return (
-    <div className="relative w-full h-full rounded-xl overflow-hidden bg-gray-100 dark:bg-gray-800">
+    <div className="relative w-full h-full">
       <canvas
         ref={canvasRef}
         width={600}
-        height={350}
-        className="w-full h-full"
+        height={200}
+        className="w-full h-full rounded-xl"
       />
       
-      {/* Real-time badge */}
-      <div className="absolute top-4 right-4 flex items-center space-x-2 bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium shadow-lg">
-        <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-        <span>Real-time</span>
-      </div>
-      
-      {/* Live Dashboard label */}
-      <div className="absolute top-4 left-4 text-gray-400 dark:text-gray-500 text-sm">
-        Live Dashboard
-      </div>
-      
-      {/* Vehicle count popup */}
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 rounded-xl shadow-xl p-4 text-center min-w-[140px]">
-        <p className="text-3xl font-bold text-navy dark:text-white">2,024</p>
+      {/* Center Counter - positioned absolutely over canvas */}
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 rounded-xl shadow-xl px-6 py-4 text-center z-10">
+        <p className="text-3xl font-bold text-navy dark:text-white">2,021</p>
         <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Vehicles Online</p>
-      </div>
-      
-      {/* Vehicle legend */}
-      <div className="absolute bottom-4 left-4 flex space-x-3">
-        {vehicleTypes.slice(0, 4).map(v => (
-          <div key={v.id} className="flex items-center space-x-1">
-            <div 
-              className="w-3 h-3 rounded-full" 
-              style={{ backgroundColor: v.color }}
-            />
-          </div>
-        ))}
       </div>
     </div>
   );

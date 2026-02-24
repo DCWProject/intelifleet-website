@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, ChevronRight, Cloud, Server, Lock, Fuel, Bell, Route, Clock, MapPinned, TrendingUp, ArrowUp, ArrowDown } from 'lucide-react';
+import LiveFleetAnimation from '../components/LiveFleetAnimation.jsx';
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
@@ -227,43 +228,7 @@ const Home = () => {
                 <div className="p-6">
                   {/* Map Area */}
                   <div className="relative bg-gray-50 dark:bg-gray-700 rounded-2xl h-48 mb-4 overflow-hidden">
-                    {/* Grid pattern */}
-                    <div className="absolute inset-0 opacity-20">
-                      <div className="w-full h-full" style={{
-                        backgroundImage: 'linear-gradient(#94a3b8 1px, transparent 1px), linear-gradient(90deg, #94a3b8 1px, transparent 1px)',
-                        backgroundSize: '40px 40px'
-                      }}></div>
-                    </div>
-                    
-                    {/* Moving vehicle indicators */}
-                    <div className="absolute top-4 left-8 w-8 h-8 bg-blue-500 rounded-lg flex items-center justify-center shadow-lg">
-                      <MapPin className="w-4 h-4 text-white" />
-                    </div>
-                    <div className="absolute top-12 right-12 w-8 h-8 bg-green-500 rounded-lg flex items-center justify-center shadow-lg">
-                      <TrendingUp className="w-4 h-4 text-white" />
-                    </div>
-                    
-                    <div className="absolute bottom-8 left-16 w-8 h-8 bg-purple-500 rounded-lg flex items-center justify-center shadow-lg">
-                      <Droplets className="w-4 h-4 text-white" />
-                    </div>
-                    
-                    <div className="absolute top-1/2 right-8 transform -translate-y-1/2">
-                      <div className="bg-green-500 text-white p-1 rounded-lg">
-                        <ArrowUp className="w-4 h-4" />
-                      </div>
-                    </div>
-                    
-                    <div className="absolute bottom-4 right-16">
-                      <div className="bg-blue-500 text-white p-1 rounded-lg">
-                        <ArrowDown className="w-4 h-4" />
-                      </div>
-                    </div>
-                    
-                    {/* Center Counter */}
-                    <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-gray-800 rounded-xl shadow-xl px-6 py-4 text-center">
-                      <p className="text-3xl font-bold text-navy dark:text-white">{vehicleCount.toLocaleString()}</p>
-                      <p className="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">Vehicles Online</p>
-                    </div>
+                    <LiveFleetAnimation />
                   </div>
 
                   {/* Alert Cards */}
