@@ -6,6 +6,7 @@ import LiveFleetAnimation from '../components/LiveFleetAnimation.jsx';
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
   const [vehicleCount, setVehicleCount] = useState(2024);
+  const [activeBar, setActiveBar] = useState(null);
 
   // Animate vehicle count
   useEffect(() => {
@@ -14,6 +15,21 @@ const Home = () => {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
+  const barData = [
+    { month: 'Jan', value: 40 },
+    { month: 'Feb', value: 65 },
+    { month: 'Mar', value: 45 },
+    { month: 'Apr', value: 80 },
+    { month: 'May', value: 55 },
+    { month: 'Jun', value: 85 },
+    { month: 'Jul', value: 60 },
+    { month: 'Aug', value: 75 },
+    { month: 'Sep', value: 50 },
+    { month: 'Oct', value: 90 },
+    { month: 'Nov', value: 70 },
+    { month: 'Dec', value: 78 },
+  ];
 
   const pillars = [
     {
@@ -271,16 +287,27 @@ const Home = () => {
                       </div>
                     </div>
                     <div className="flex items-end justify-between h-16 space-x-1">
-                      {[40, 65, 45, 80, 55, 85, 60, 75, 50, 90, 70, 78].map((h, i) => (
-                        <div 
-                          key={i} 
-                          className="flex-1 bg-primary rounded-t-sm"
-                          style={{ height: `${h}%`, opacity: 0.6 + (i * 0.03) }}
-                        ></div>
+                      {barData.map((bar, i) => (
+                        <div
+                          key={i}
+                          className={`flex-1 rounded-t-sm cursor-pointer transition-all duration-300 ${
+                            activeBar === i 
+                              ? 'bg-navy dark:bg-primary' 
+                              : 'bg-primary hover:bg-primary/80'
+                          }`}
+                          style={{ height: `${bar.value}%`, opacity: activeBar === i ? 1 : 0.6 + (i * 0.03) }}
+                          onClick={() => setActiveBar(activeBar === i ? null : i)}
+                          title={`${bar.month}: ${bar.value}%`}
+                        />
                       ))}
                     </div>
-                    <div className="flex justify-between mt-1 text-xs text-gray-400">
+                    <div className="flex justify-between mt-2 text-xs text-gray-400">
                       <span>Jan</span>
+                      {activeBar !== null && (
+                        <span className="text-navy dark:text-white font-medium">
+                          {barData[activeBar].month}: {barData[activeBar].value}%
+                        </span>
+                      )}
                       <span>Dec 2024</span>
                     </div>
                   </div>
