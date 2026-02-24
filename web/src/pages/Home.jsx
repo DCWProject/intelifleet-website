@@ -4,6 +4,8 @@ import { ArrowRight, MapPin, Droplets, Shield, Users, Wrench, BarChart3, Chevron
 import LiveFleetAnimation from '../components/LiveFleetAnimation.jsx';
 import RealTimeMapAnimation from '../components/RealTimeMapAnimation.jsx';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 const Home = () => {
   const [activeTab, setActiveTab] = useState('fuel');
   const [vehicleCount, setVehicleCount] = useState(2024);
@@ -530,7 +532,7 @@ const Home = () => {
                     
                     {/* App preview image */}
                     <img 
-                      src="/images/mobile-app-preview.jpg" 
+                      src={`${baseUrl}images/mobile-app-preview.jpg`}
                       alt="InteliFleet Mobile App"
                       className="w-full h-full object-cover"
                       onError={(e) => {
