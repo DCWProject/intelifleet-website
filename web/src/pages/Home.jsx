@@ -518,11 +518,34 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-            <div className="bg-gray-100 dark:bg-gray-700 rounded-2xl h-96 flex items-center justify-center">
-              <div className="text-center">
-                <div className="w-48 h-80 bg-navy dark:bg-primary rounded-3xl mx-auto flex items-center justify-center">
-                  <span className="text-white dark:text-navy text-sm">Mobile App Mockup</span>
+            <div className="flex items-center justify-center">
+              {/* Phone mockup with app preview */}
+              <div className="relative">
+                {/* Phone frame */}
+                <div className="w-64 h-[520px] bg-gray-900 rounded-[3rem] p-3 shadow-2xl">
+                  {/* Phone screen */}
+                  <div className="w-full h-full bg-white dark:bg-gray-800 rounded-[2.5rem] overflow-hidden relative">
+                    {/* Notch */}
+                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-b-2xl z-10"></div>
+                    
+                    {/* App preview image */}
+                    <img 
+                      src="/images/mobile-app-preview.jpg" 
+                      alt="InteliFleet Mobile App"
+                      className="w-full h-full object-cover"
+                      onError={(e) => {
+                        e.target.style.display = 'none';
+                        e.target.nextSibling.style.display = 'flex';
+                      }}
+                    />
+                    <div className="hidden w-full h-full flex items-center justify-center bg-gray-100 dark:bg-gray-700">
+                      <span className="text-gray-500 dark:text-gray-400 text-sm">Mobile App Preview</span>
+                    </div>
+                  </div>
                 </div>
+                
+                {/* Reflection/glow effect */}
+                <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-48 h-4 bg-black/20 blur-xl rounded-full"></div>
               </div>
             </div>
           </div>
