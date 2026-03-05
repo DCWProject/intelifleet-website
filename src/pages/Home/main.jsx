@@ -255,8 +255,8 @@ const Home = () => {
   return (
     <div>
       <section>
-        <Container className="relative pt-20 md:pt-30">
-          <div className="text-center">
+        <Container className="relative pt-30 md:pt-36">
+          <div className="">
             <AnimatedGroup variants={transitionVariants}>
               <Link
                 to="/company/partners"
@@ -279,10 +279,10 @@ const Home = () => {
                 </div>
               </Link>
 
-              <h1 className="mt-8 mx-auto text-balance text-3xl md:text-5xl lg:text-7xl lg:mt-10 xl:text-[5.25rem] font-semibold">
+              <h1 className="mt-8 mx-auto text-balance text-3xl md:text-5xl lg:text-7xl lg:mt-10 xl:text-[5.25rem] font-semibold text-center">
                 Real-time Fleet Intelligence for every vehicle
               </h1>
-              <p className="mx-auto mt-8 max-w-2xl text-balance md:text-lg">
+              <p className="mx-auto mt-8 max-w-2xl text-balance md:text-lg text-center">
                 GPS tracking, fuel intelligence, activity verification
                 (including sweeping/cleaning), alerts, and analytics — powered
                 by telemetry + sensors.

@@ -20,6 +20,9 @@ import { Button } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { AnimatedGroup } from "@/components/ui/animated-group";
 
+const phoneRegex = /^(\+91[\-\s]?)?[6-9]\d{9}$/;
+const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
 const Contact = () => {
   const [selectedFaqIndex, setSelectedFaqIndex] = useState(null);
   const [formData, setFormData] = useState({
@@ -30,7 +33,7 @@ const Contact = () => {
     message: "",
     service: "",
   });
-
+  const [error, setError] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
@@ -39,25 +42,51 @@ const Contact = () => {
       ...prev,
       [name]: value,
     }));
+
+    let newErr = { ...error };
+
+    if (name === "email") {
+      if (value && !emailRegex.test(value.trim())) {
+        newErr.email = "Invalid email format";
+      } else {
+        newErr.email = "";
+      }
+    } else if (name === "phone") {
+      if (value && !phoneRegex.test(value.trim())) {
+        newErr.phone = "Invalid phone number format";
+      } else {
+        newErr.phone = "";
+      }
+    } else if (newErr[name]) {
+      newErr[name] = "";
+    }
+    setError(newErr);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  const handleSubmit = async () => {
+    let error = {};
+    if (!formData.name) error.name = "Name is required";
+    if (!formData?.email?.trim()) {
+      error.email = "Email is required";
+    } else if (!emailRegex.test(formData?.email)) {
+      error.email = "Invalid email format";
+    }
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    if (!formData?.phone?.trim()) {
+      error.phone = "Phone is required";
+    } else if (!phoneRegex.test(formData?.phone)) {
+      error.phone = "Invalid phone number format";
+    }
 
-    alert("Thank you for your message! We'll get back to you soon.");
-    setFormData({
-      name: "",
-      email: "",
-      company: "",
-      phone: "",
-      message: "",
-      service: "",
-    });
-    setIsSubmitting(false);
+    setError(error);
+
+    if (Object.keys(error).length == 0) {
+      submitData(formData);
+    }
+  };
+
+  const submitData = (payload) => {
+    console.log(payload);
   };
 
   const transitionVariants = {
@@ -82,7 +111,6 @@ const Contact = () => {
 
   return (
     <div>
-
       {/* Hero Section */}
       <section className="pt-24 md:pt-36 pb-10 md:pb-20">
         <Container>
@@ -206,7 +234,7 @@ const Contact = () => {
               transition={{ duration: 0.8 }}
             >
               <div className="p-4">
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="space-y-6">
                   <div className="grid grid-cols-1 gap-6">
                     <div>
                       <label
@@ -222,10 +250,14 @@ const Contact = () => {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
-                        required
                         className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-colors shadow"
-                        placeholder="John Doe"
+                        placeholder="e.g. John Doe"
                       />
+                      {error?.name && (
+                        <span className="text-destructive text-xs mt-1">
+                          {error?.name}
+                        </span>
+                      )}
                     </div>
                     <div>
                       <label
@@ -241,10 +273,14 @@ const Contact = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleInputChange}
-                        required
                         className="shadow w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-colors"
-                        placeholder="john@example.com"
+                        placeholder="e.g. john@example.com"
                       />
+                      {error?.email && (
+                        <span className="text-destructive text-xs mt-1">
+                          {error?.email}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -263,7 +299,7 @@ const Contact = () => {
                         value={formData.company}
                         onChange={handleInputChange}
                         className="shadow w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-colors"
-                        placeholder="Acme Corporation"
+                        placeholder="e.g. Acme Corporation"
                       />
                     </div>
                     <div>
@@ -281,8 +317,13 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="shadow w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-colors"
-                        placeholder="+1 (555) 123-4567"
+                        placeholder="e.g. 977730364"
                       />
+                      {error?.phone && (
+                        <span className="text-destructive text-xs mt-1">
+                          {error?.phone}
+                        </span>
+                      )}
                     </div>
                   </div>
 
@@ -306,10 +347,10 @@ const Contact = () => {
                   </div>
 
                   <Button
-                    type="submit"
                     size="lg"
                     disabled={isSubmitting}
-                    className="w-full"
+                    onClick={handleSubmit}
+                    className="w-full cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
@@ -323,7 +364,7 @@ const Contact = () => {
                       </>
                     )}
                   </Button>
-                </form>
+                </div>
               </div>
             </motion.div>
           </div>

@@ -19,6 +19,7 @@ import {
   Lightbulb,
   Rocket,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 28 },
@@ -320,8 +321,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="max-w-3xl mx-auto relative">
-            <div className="absolute left-8 top-0 bottom-0 w-px bg-border" />
-            <div className="space-y-10">
+            <div className="">
               {milestones.map((m, i) => (
                 <motion.div
                   key={i}
@@ -329,12 +329,19 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.08, duration: 0.5 }}
-                  className="flex gap-8 pl-20 relative"
+                  className="flex gap-8"
                 >
-                  <div className="absolute left-4 top-1.5 w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-xs font-bold text-green-400">
-                    {i + 1}
+                  <div className="flex flex-col self-stretch items-center">
+                    <div className="w-8 h-8 rounded-full bg-green-500/20 border-2 border-green-500 flex items-center justify-center text-xs font-bold text-green-400">
+                      {i + 1}
+                    </div>
+                    {i !== milestones.length - 1 && (
+                      <span className="flex-1 my-1 border-s border-muted-foreground border-dashed" />
+                    )}
                   </div>
-                  <div>
+                  <div
+                    className={cn(i !== milestones.length - 1 ? "pb-6" : "")}
+                  >
                     <div className="text-xs font-bold text-green-400 uppercase tracking-widest mb-1">
                       {m.year}
                     </div>

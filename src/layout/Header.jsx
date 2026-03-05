@@ -314,7 +314,7 @@ const Header = () => {
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, scale: 0.95, filter: "blur(2px)" }}
             transition={{ duration: 0.3 }}
-            className="absolute inset-0 z-50 bg-background p-5 overflow-y-auto h-[calc(100vh-60px)] mt-15"
+            className="absolute inset-0 z-50 bg-background p-5 overflow-y-auto h-[calc(100vh-60px)] mt-14"
           >
             <nav className="space-y-6">
               {menuItems.map((section, idx) => (
