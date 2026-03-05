@@ -62,9 +62,9 @@ const Routing = () => {
         {/* Company pages */}
         <Route path="/company/about" element={<AppLayout title="About"><AboutPage /></AppLayout>} />
         <Route path="/company/customers" element={<AppLayout title="Customers"><CustomersPage /></AppLayout>} />
-        {/* <Route path="/company/case-studies" element={<AppLayout title="Case Studies"><CaseStudiesPage /></AppLayout>} />
+        <Route path="/company/case-studies" element={<AppLayout title="Case Studies"><CaseStudiesPage /></AppLayout>} />
         <Route path="/company/blog" element={<AppLayout title="Blog"><BlogPage /></AppLayout>} />
-        <Route path="/company/careers" element={<AppLayout title="Careers"><CareersPage /></AppLayout>} /> */}
+        <Route path="/company/careers" element={<AppLayout title="Careers"><CareersPage /></AppLayout>} />
         <Route path="/company/partners" element={<AppLayout title="Partners"><PartnersPage /></AppLayout>} />
         <Route path="/company/contact" element={<AppLayout title="Contact"><Contact /></AppLayout>} />
 

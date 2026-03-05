@@ -14,7 +14,7 @@ const AppLayout = ({ title, children }) => {
       <div className="min-h-screen w-full relative">
         {resolvedTheme == "light" ? (
           <div
-            className="absolute inset-0 max-h-screen"
+            className="absolute inset-0 max-h-screen z-0 pointer-events-none"
             style={{
               backgroundImage: `
   radial-gradient(
@@ -34,7 +34,7 @@ const AppLayout = ({ title, children }) => {
           />
         ) : (
           <div
-            className="absolute inset-0 z-0 max-h-screen"
+            className="absolute inset-0 z-0 max-h-screen pointer-events-none"
             style={{
               background: `
         radial-gradient(
@@ -47,7 +47,6 @@ const AppLayout = ({ title, children }) => {
             }}
           />
         )}
-        {/* Dashed Top Left Fade Grid */}
         <div
           className="absolute inset-0 -z-10 max-h-screen dark:opacity-15"
           style={{

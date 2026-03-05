@@ -56,7 +56,7 @@ export function PageHero({
   children,
 }) {
   return (
-    <section className="pt-28 pb-20 md:pt-36 md:pb-28">
+    <section className="pt-28 pb-10 md:pt-36 md:pb-20">
  
 
       <Container>
@@ -175,7 +175,7 @@ export function PageHero({
 /** Section wrapper with animated entry */
 export function PageSection({ title, subtitle, children, className }) {
   return (
-    <section className={cn("py-16 md:py-24", className)}>
+    <section className={cn("py-10 md:py-20", className)}>
       <Container>
         {(title || subtitle) && (
           <div className="text-center mb-12 max-w-2xl mx-auto">
@@ -213,17 +213,17 @@ export function FeatureCard({
       transition={{ duration: 0.5 }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
       className={cn(
-        "group p-6 rounded-2xl border bg-card hover:shadow-lg transition-all duration-300",
+        "group p-6 rounded-[2rem] border bg-card hover:shadow-lg transition-all duration-300",
         className,
       )}
     >
       <div
-        className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 bg-primary/10 border border-primary/50"
+        className="w-13 h-13 rounded-2xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 bg-primary/5 border border-primary/20"
       
       >
         <Icon className="size-6 text-primary"/>
       </div>
-      <h3 className="font-semibold text-lg mb-2 tracking-tight">{title}</h3>
+      <h3 className="font-bold text-xl mb-3 tracking-tight">{title}</h3>
       <p className="text-sm text-muted-foreground leading-relaxed">
         {description}
       </p>

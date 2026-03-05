@@ -60,42 +60,6 @@ const Contact = () => {
     setIsSubmitting(false);
   };
 
-  const contactInfo = [
-    {
-      icon: <Phone className="size-5" />,
-      title: "Phone",
-      details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
-      description: "Mon-Fri from 8am to 6pm",
-    },
-    {
-      icon: <Mail className="size-5" />,
-      title: "Email",
-      details: ["support@intelifleet.com", "sales@intelifleet.com"],
-      description: "We respond within 24 hours",
-    },
-    {
-      icon: <MapPin className="size-5" />,
-      title: "Office",
-      details: ["123 Tech Street", "San Francisco, CA 94105"],
-      description: "Visit us by appointment",
-    },
-    {
-      icon: <Clock className="size-5" />,
-      title: "Business Hours",
-      details: ["Monday - Friday: 8am - 6pm", "Saturday: 9am - 2pm"],
-      description: "Closed on Sundays",
-    },
-  ];
-
-  const services = [
-    "Fleet Management",
-    "GPS Tracking",
-    "Fuel Monitoring",
-    "Driver Management",
-    "Maintenance Scheduling",
-    "Analytics & Reporting",
-  ];
-
   const transitionVariants = {
     item: {
       hidden: {
@@ -118,20 +82,9 @@ const Contact = () => {
 
   return (
     <div>
-      {/* Background gradient */}
-      {/* <div
-        className="absolute inset-0 max-h-screen z-0 bg-fixed"
-        style={{
-          backgroundImage: `
-        radial-gradient(circle at center, #FFF991 0%, transparent 70%)
-      `,
-          opacity: 0.6,
-          mixBlendMode: "multiply",
-        }}
-      /> */}
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 md:pt-36 md:pb-20">
+      <section className="pt-24 md:pt-36 pb-10 md:pb-20">
         <Container>
           <AnimatedGroup variants={transitionVariants}>
             <div className="text-center max-w-4xl mx-auto space-y-4">
@@ -148,7 +101,7 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Info Section */}
-      <section className="py-12">
+      <section className="py-10 md:py-20">
         <Container>
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Why Choose Us */}
@@ -378,7 +331,7 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 lg:py-24">
+      <section className="py-10 md:py-20">
         <Container className="space-y-16">
           <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
             <h2 className="text-4xl md:text-5xl font-bold">
