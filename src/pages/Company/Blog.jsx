@@ -61,9 +61,7 @@ image: "https://images.unsplash.com/photo-1504215680853-026ed2a45def?auto=format
     date: "Jan 30, 2026",
     readTime: "2 min read",
     tags: ["Product Update", "Geofence", "Tracking"],
-    image:
-      "https://images.unsplash.com/photo-1502920917128-1aa500764cbd?auto=format&fit=crop&w=1200&q=80",
-  },
+image: "https://images.unsplash.com/photo-1502920514313-52581002a659?auto=format&fit=crop&w=1200&q=80"  },
   {
     title: "Complete Guide: Setting Up Maintenance Alerts for Your Fleet",
     excerpt:

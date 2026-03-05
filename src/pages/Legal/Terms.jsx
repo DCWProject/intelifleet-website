@@ -125,9 +125,9 @@ Before initiating any legal proceedings, parties agree to attempt good-faith neg
     title: "13. Contact Information",
     content: `If you have questions about these Terms, please contact us:
 
-Email: legal@intelifleet.com
-Phone: +91 9777303064
-Address: InteliFleet Technologies, Bhubaneswar, Odisha, India — 751001
+Email: contact@intelifleet.in
+Phone: +91 9583393333
+Address: K-8/333, Kalinga Nagar, Bhubaneswar, Odisha - 751029
 
 We aim to respond to all legal inquiries within 5 business days.`,
   },
@@ -249,10 +249,9 @@ export default function TermsPage() {
                 </span>
                 . For questions, contact us at{" "}
                 <a
-                  href="mailto:legal@intelifleet.com"
                   className="text-primary hover:underline"
                 >
-                  legal@intelifleet.com
+                  contact@intelifleet.in
                 </a>
                 .
               </p>

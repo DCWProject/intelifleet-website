@@ -221,9 +221,14 @@ const Header = () => {
               }
             />
 
-            <span className="font-bold text-2xl tracking-tight">
-              Inteli<span className="text-green-400">Fleet</span>
-            </span>
+           <img
+              className="max-h-9 object-cover"
+              src={
+                resolvedTheme == "light"
+                  ? "/img/light-text.png"
+                  : "/img/dark-text.png"
+              }
+            />
           </div>
           <div className="hidden lg:block">
             <NavigationMenu>

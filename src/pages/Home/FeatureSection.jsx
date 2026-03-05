@@ -664,11 +664,11 @@ const FeatureSection = () => {
           <div className="relative overflow-hidden col-span-12 md:col-span-7 rounded-2xl border h-100 shadow">
             <div className="space-y-1 py-4 px-7">
               <div className="font-bold text-lg">
-                Interactive Dashboard Interface
+                Interactive Live Interface
               </div>
               <div className="text-sm text-muted-foreground md:max-w-md">
-                You can interact with the dashboard to view and manage your
-                data.and more information
+                You can interact with the live interface to view and manage your
+                fleet.and see the real-time status of your vehicles.
               </div>
             </div>
             <div className="h-75 bg-muted/60 border rounded-xl p-3  w-[calc(100%-15px)] absolute -bottom-4 -right-4">
@@ -676,8 +676,8 @@ const FeatureSection = () => {
                 <img
                   src={
                     resolvedTheme === "dark"
-                      ? "/img/dark-dash.webp"
-                      : "/img/light-dash.webp"
+                      ? "/img/dark-fleet-dash.png"
+                      : "/img/light-fleet-das.png"
                   }
                   className="h-auto w-auto rounded-tl-xl border"
                 />

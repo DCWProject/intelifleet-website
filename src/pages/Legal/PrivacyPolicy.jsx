@@ -191,11 +191,9 @@ Your continued use of the Service after the effective date of the updated Policy
     title: "13. Contact Us",
     content: `If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact our Privacy Team:
 
-Email: privacy@intelifleet.com
-Phone: +91 9777303064
-Address: InteliFleet Technologies, Bhubaneswar, Odisha, India — 751001
-
-Data Protection Officer (DPO): dpo@intelifleet.com
+Email:  contact@intelifleet.in
+Phone: +91 9583393333
+Address:  K-8/333, Kalinga Nagar, Bhubaneswar, Odisha - 751029
 
 We are committed to resolving privacy concerns promptly and transparently. All requests will receive a response within 30 calendar days.`,
   },
@@ -324,10 +322,9 @@ export default function PrivacyPolicyPage() {
                 </span>
                 . For privacy-related inquiries, contact us at{" "}
                 <a
-                  href="mailto:privacy@intelifleet.com"
                   className="text-primary hover:underline"
                 >
-                  privacy@intelifleet.com
+                  contact@intelifleet.in
                 </a>
                 .
               </p>
